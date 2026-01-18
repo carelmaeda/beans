@@ -1,0 +1,81 @@
+@use '../styles/variables' as *;
+@import "tailwindcss";
+
+// ==========================================================================
+// Tailwind v4 Theme Integration
+// ==========================================================================
+@theme inline {
+  // Core Brand Colors
+  --color-bean-blue: var(--bean-blue-primary);
+  --color-bean-yellow: var(--bean-yellow-primary);
+  --color-bean-white: var(--bean-white);
+  --color-bean-black: var(--bean-black);
+
+  // Derived Tones
+  --color-bean-blue-dark: var(--bean-blue-dark);
+  --color-bean-blue-light: var(--bean-blue-light);
+  --color-bean-yellow-bright: var(--bean-yellow-bright);
+  --color-bean-gray-light: var(--bean-gray-light);
+
+  // Semantic aliases (for Hero and other sections)
+  --color-bean-dark: var(--bean-blue-dark);
+  --color-bean-accent: var(--bean-yellow-bright);
+
+  // Legacy mappings (for compatibility)
+  --color-primary: var(--bean-blue-primary);
+  --color-accent: var(--bean-yellow-bright);
+  --color-base: var(--bean-white);
+  --color-dark: var(--bean-black);
+}
+
+// ==========================================================================
+// Base Styles
+// ==========================================================================
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bean-white);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Scroll margin for sections with IDs to offset fixed header
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+// Focus Visible (Accessibility)
+*:focus-visible {
+  outline: 2px solid var(--bean-blue-primary);
+  outline-offset: 2px;
+}
+
+// ==========================================================================
+// Utility Classes
+// ==========================================================================
+
+// Gradient backgrounds
+.bg-bean-gradient {
+  background: linear-gradient(135deg, var(--bean-blue-primary) 0%, var(--bean-blue-dark) 100%);
+}
+
+// Text gradients
+.text-bean-gradient {
+  background: linear-gradient(135deg, var(--bean-blue-primary) 0%, var(--bean-yellow-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Transitions
+.transition-bean {
+  transition: var(--transition-fast);
+}
+
+.transition-bean-pop {
+  transition: var(--transition-pop);
+}
+

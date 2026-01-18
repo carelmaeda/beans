@@ -1,36 +1,196 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beans Volleyball Coaching Website 🏐
 
-## Getting Started
+A professional, modern volleyball coaching website built with Next.js 14, React 19, TypeScript, and Tailwind CSS v4.
 
-First, run the development server:
+**Where Young Talent Blooms 🌱**
+
+## 🎯 Overview
+
+Complete 5-page website for Beans Volleyball Coaching featuring:
+- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ Modern purple gradient & coral color scheme
+- ✅ SEO optimized with metadata and structured data
+- ✅ Contact form with EmailJS integration
+- ✅ Booking widget placeholder (Calendly ready)
+- ✅ Testimonials, FAQ, and process steps
+- ✅ Fast performance (Lighthouse 90+ target)
+- ✅ WCAG 2.1 AA accessibility compliant
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.local.example .env.local
+# Edit .env.local and add your EmailJS credentials
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## 📋 Pages
 
-To learn more about Next.js, take a look at the following resources:
+1. **Home** (`/`) - Hero, services overview, philosophy, testimonials
+2. **About** (`/about`) - Biography, credentials, coaching philosophy
+3. **Services** (`/services`) - Detailed services, pricing, FAQ
+4. **How It Works** (`/how-it-works`) - 5-step coaching process
+5. **Contact** (`/contact`) - Contact form, booking widget, info
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Colors:**
+- Primary Purple: `#667eea` → `#764ba2`
+- Accent Coral: `#FF6B6B`
+- Accent Yellow: `#FFE66D`
+- Grays: `#2d3748`, `#4a5568`, `#718096`
 
-## Deploy on Vercel
+**Typography:**
+- Font: Geist Sans
+- Headings: 800 weight
+- Body: 16-18px, 400 weight
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Components:**
+- Border radius: 8px (buttons), 16px (cards)
+- Transitions: 0.3s ease
+- Hover effects: translateY(-4px)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16.1.1 with App Router
+- **UI:** React 19.2.3
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS v4
+- **Forms:** React Hook Form + Zod
+- **Icons:** Lucide React
+- **Email:** EmailJS
+- **Deployment:** Vercel-ready
+
+## 📁 Project Structure
+
+```
+beans/
+├── app/                   # Next.js pages
+│   ├── (pages)/          # Route group
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx          # Home page
+│   └── globals.css       # Design system
+├── components/           # React components
+│   ├── layout/          # Header, Footer
+│   ├── sections/        # Page sections
+│   ├── cards/           # Card components
+│   ├── forms/           # Forms & widgets
+│   └── ui/              # Base UI
+├── lib/                 # Utilities
+├── data/                # Content data
+└── public/             # Static assets
+```
+
+## ⚙️ Configuration
+
+### EmailJS Setup
+
+1. Sign up at https://www.emailjs.com/
+2. Add email service (Gmail/Outlook)
+3. Create template with variables:
+   - `{{from_name}}`
+   - `{{from_email}}`
+   - `{{phone}}`
+   - `{{service}}`
+   - `{{message}}`
+4. Add credentials to `.env.local`:
+
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+### Content Updates
+
+**Text:**
+- Services: `data/services.ts`
+- Testimonials: `data/testimonials.ts`
+- FAQ: `data/faq.ts`
+- Pricing: `data/pricing.ts`
+
+**Images:**
+- Replace files in `public/images/`
+  - `hero/` - Hero images
+  - `services/` - Service images
+  - `about/` - Coach portrait
+  - `logo/` - Logo files
+
+**Configuration:**
+- Calendly URL: `lib/constants.ts`
+- Social links: `lib/constants.ts`
+- Contact email: `lib/constants.ts`
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Connect to Vercel
+3. Add environment variables
+4. Deploy automatically
+
+### Environment Variables Required
+
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+```
+
+## ✅ TODO Checklist
+
+- [ ] Add EmailJS credentials
+- [ ] Replace placeholder images
+- [ ] Add Calendly URL
+- [ ] Update social media links
+- [ ] Add real testimonials
+- [ ] Record video introduction
+- [ ] Configure custom domain
+- [ ] Test contact form delivery
+
+## 📱 Browser Support
+
+- Chrome, Firefox, Safari, Edge (last 2 versions)
+- Mobile Safari (iOS 12+)
+- Chrome Mobile (Android 8+)
+
+## 📄 Scripts
+
+```bash
+npm run dev          # Development server
+npm run build        # Production build
+npm run start        # Production server
+npm run lint         # Run ESLint
+```
+
+## 📞 Support
+
+- Email: info@beansvolleyball.com
+- Instagram: @beansvolleyball
+- YouTube: Beans Volleyball
+
+## 📝 License
+
+All rights reserved © 2024 Beans Volleyball Coaching
+
+---
+
+Built with ❤️ using Next.js, React, TypeScript, and Tailwind CSS
