@@ -5,103 +5,96 @@ const roadmapItems = [
     icon: Sprout,
     title: 'Little Seeds',
     subtitle: 'Kindergarten Program',
-    description:
-      'Introducing volleyball fundamentals to young athletes through play-based learning. Building coordination, teamwork, and a love for the sport.',
+    description: 'Play-based fundamentals for the next generation.',
     status: 'Coming Soon',
   },
   {
     icon: Globe2,
     title: 'Global Clinics',
-    subtitle: 'International Training Camps',
-    description:
-      'Intensive training experiences in Japan and around the world. Connect with elite coaches and players from the JVA network.',
+    subtitle: 'International Training',
+    description: 'Intensive experiences in Japan and worldwide.',
     status: 'Coming Soon',
   },
   {
     icon: BarChart3,
     title: 'Technical Analytics',
-    subtitle: 'Performance Data Systems',
-    description:
-      'Advanced video analysis and performance tracking. Data-driven insights to optimize technique and accelerate improvement.',
+    subtitle: 'Performance Data',
+    description: 'Data-driven insights to optimize technique.',
     status: 'In Development',
   },
   {
     icon: Dumbbell,
     title: 'Physical Training',
     subtitle: 'Strength & Conditioning',
-    description:
-      'Volleyball-specific athletic development programs. Building the physical foundation for peak performance.',
+    description: 'Volleyball-specific athletic development.',
     status: 'In Development',
   },
   {
     icon: Brain,
     title: 'Mental Coaching',
     subtitle: 'Sports Psychology',
-    description:
-      'Developing the mental game through focus training, pressure management, and confidence building techniques.',
+    description: 'Focus training and pressure management.',
     status: 'Coming Soon',
   },
 ];
 
 export default function Roadmap() {
   return (
-    <section id="roadmap" className="py-20 md:py-32 bg-[var(--bean-gray-light)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="roadmap" className="py-24 bg-[#0A0C10] px-6 overflow-hidden">
+      <div className="max-w-5xl mx-auto">
+        
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-[var(--bean-blue-primary)]/10 text-[var(--bean-blue-primary)] rounded-full text-sm font-semibold mb-4">
+        <div className="mb-16 md:text-center">
+          <span className="inline-block px-4 py-1.5 bg-bean-accent/20 text-bean-accent rounded-full text-[10px] font-black tracking-widest uppercase mb-4">
             The Greenhouse
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[var(--bean-black)] mb-6">
-            Growing Together
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase">
+            FUTURE <span className="text-bean-blue">ROADMAP</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Exciting programs on the horizon to support every stage of your volleyball journey.
-          </p>
+          <div className="w-20 h-2 bg-bean-accent rounded-full md:mx-auto" />
         </div>
 
-        {/* Timeline */}
+        {/* Tight Vertical Timeline */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[var(--bean-blue-primary)]" />
+          {/* The Rail */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-bean-blue via-bean-accent to-transparent opacity-20" />
 
-          {/* Timeline items */}
           <div className="space-y-12">
             {roadmapItems.map((item, index) => (
-              <div key={index} className="relative">
-                {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--bean-yellow-bright)] rounded-full border-4 border-white shadow-lg z-10" />
+              <div key={index} className={`relative flex items-center md:justify-between ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                
+                {/* Timeline Node (The Pulse) */}
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
+                  <div className="w-4 h-4 rounded-full bg-bean-dark border-2 border-bean-accent shadow-[0_0_15px_rgba(242,201,76,0.5)]" />
+                </div>
 
-                <div
-                  className={`md:grid md:grid-cols-2 md:gap-8 items-center ${
-                    index % 2 === 0 ? '' : 'md:direction-rtl'
-                  }`}
-                >
-                  {/* Card */}
-                  <div
-                    className={`bg-white rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow ${
-                      index % 2 === 0 ? 'md:mr-8' : 'md:ml-8 md:col-start-2'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-[var(--bean-yellow-bright)] rounded-2xl flex items-center justify-center">
-                        <item.icon className="w-6 h-6 text-[var(--bean-black)]" />
+                {/* Content Card */}
+                <div className={`ml-12 md:ml-0 md:w-[45%] group transition-all duration-300 hover:translate-y-[-4px]`}>
+                  <div className="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-sm group-hover:bg-white/[0.08] transition-colors">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-2.5 bg-bean-blue/20 rounded-xl text-bean-blue group-hover:bg-bean-accent group-hover:text-bean-dark transition-colors">
+                        <item.icon size={20} strokeWidth={2.5} />
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-xl font-bold text-[var(--bean-black)]">{item.title}</h3>
-                          <span className="px-2 py-1 bg-[var(--bean-blue-primary)]/10 text-[var(--bean-blue-primary)] text-xs font-semibold rounded-full">
-                            {item.status}
-                          </span>
-                        </div>
-                        <p className="text-[var(--bean-blue-primary)] font-medium text-sm mb-2">{item.subtitle}</p>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-bean-accent bg-bean-accent/10 px-3 py-1 rounded-full border border-bean-accent/20">
+                        {item.status}
+                      </span>
                     </div>
-                  </div>
 
-                  {/* Empty space for alternating layout */}
-                  {index % 2 === 0 ? <div className="hidden md:block" /> : null}
+                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">
+                      {item.subtitle}
+                    </p>
+                    <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-white/50 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Date/Order Marker (Invisible on Mobile, Label on Desktop) */}
+                <div className="hidden md:block w-[45%] text-white/5 font-black text-6xl select-none">
+                  0{index + 1}
                 </div>
               </div>
             ))}

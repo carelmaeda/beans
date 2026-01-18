@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { Monitor, Video, MapPin, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import DetailsModal from './modal/DetailsModal';
 
 const services = [
@@ -52,15 +53,19 @@ export default function Services() {
               <div className="p-4 bg-white rounded-2xl shadow-sm text-bean-blue mb-6 w-fit">{s.icon}</div>
               <h3 className="text-2xl font-black text-bean-dark mb-3 uppercase">{s.title}</h3>
               <p className="text-gray-600 font-medium mb-8 leading-relaxed">{s.desc}</p>
-              <button onClick={() => setActiveService(s)} className="flex items-center gap-2 font-black text-bean-blue group/btn">
+              <Button
+                variant="ghost"
+                onClick={() => setActiveService(s)}
+                className="flex items-center gap-2 font-black text-bean-blue p-0 h-auto hover:bg-transparent hover:text-bean-blue/80 group/btn"
+              >
                 LEARN MORE <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+              </Button>
             </div>
           ))}
         </div>
       </div>
 
-      <DetailsModal 
+      <DetailsModal
         isOpen={!!activeService}
         onClose={() => setActiveService(null)}
         title={activeService?.title || ""}

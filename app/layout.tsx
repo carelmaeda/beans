@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.scss';
+import '../styles/globals.scss';
 import { siteConfig } from '@/data/siteConfig';
 import { SITE_NAME, CONTACT_EMAIL } from '@/lib/constants';
 

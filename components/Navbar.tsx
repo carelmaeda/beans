@@ -2,7 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from '@/components/ui/sheet';
 
 const navLinks = [
   { label: 'Coach', href: '#coach' },
@@ -13,7 +22,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +33,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
-  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -68,48 +72,53 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#contact"
+            <Button
+              asChild
               className="bg-[var(--bean-blue-primary)] text-white px-6 py-2 rounded-full font-semibold hover:bg-[var(--bean-blue-dark)] transition-all hover:scale-105"
             >
-              Get Started
-            </Link>
+              <Link href="#contact">Get Started</Link>
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-gray-700 hover:text-[var(--bean-blue-primary)] transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium transition-colors py-2"
-                  onClick={handleLinkClick}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="#contact"
-                className="bg-[var(--bean-blue-primary)] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[var(--bean-blue-dark)] transition-all mt-2"
-                onClick={handleLinkClick}
+          {/* Mobile Menu */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden text-gray-700 hover:text-[var(--bean-blue-primary)]"
+                aria-label="Open menu"
               >
-                Book a Call
-              </Link>
-            </div>
-          </div>
-        )}
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
+              <SheetHeader>
+                <SheetTitle className="text-left text-[var(--bean-blue-primary)]">Menu</SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-4 mt-6">
+                {navLinks.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium transition-colors py-2 text-lg"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+                <SheetClose asChild>
+                  <Button
+                    asChild
+                    className="bg-[var(--bean-blue-primary)] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[var(--bean-blue-dark)] transition-all mt-4"
+                  >
+                    <Link href="#contact">Book a Call</Link>
+                  </Button>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );

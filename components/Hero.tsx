@@ -1,66 +1,127 @@
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight, ShieldCheck, Trophy, Timer } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Hero() {
   return (
-    <section
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `
-          linear-gradient(to bottom, rgba(10, 29, 77, 0.85) 0%, rgba(10, 29, 77, 0.4) 40%, rgba(10, 29, 77, 0.6) 70%, rgba(10, 29, 77, 0.95) 100%),
-          url('https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=2007&auto=format&fit=crop')
-        `,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <section className="relative w-full min-h-[95vh] flex flex-col bg-bean-dark overflow-hidden">
+      
+      {/* 1. Background Layer */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #0A0C10 10%, rgba(10, 12, 16, 0.7) 50%, rgba(10, 12, 16, 0.3) 100%),
+            linear-gradient(to bottom, transparent 70%, #0A0C10 100%),
+            url('https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?q=80&w=2007&auto=format&fit=crop')
+          `,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
 
-      {/* Accent Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-bean-accent/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-bean-blue/30 rounded-full blur-3xl pointer-events-none" />
+      {/* 2. Main Hero Content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-6 w-full pt-20 pb-12">
+        <div className="flex items-center gap-4 mb-6">
+          <span className="px-3 py-1 bg-bean-blue text-[10px] font-black tracking-[0.3em] uppercase text-white rounded-sm">
+            Elite Mentorship
+          </span>
+          <div className="h-[2px] w-12 bg-bean-accent" />
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl px-6 text-center text-white">
-        <span className="inline-block px-5 py-2 mb-8 text-xs font-bold tracking-[0.2em] uppercase border border-bean-accent/40 bg-bean-accent/10 backdrop-blur-md rounded-full text-bean-accent">
-          Elite Volleyball Mentorship
-        </span>
-
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.9] tracking-tight">
-          WHERE TALENT
-          <br />
-          <span className="text-bean-accent italic">BLOOMS</span>
+        <h1 className="text-[14vw] md:text-[8rem] font-black text-white leading-[0.8] tracking-tighter uppercase mb-10">
+          WHERE <br />
+          TALENT <br />
+          <span className="text-bean-accent italic drop-shadow-[0_0_20px_rgba(242,201,76,0.2)]">BLOOMS</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto mb-12 text-lg md:text-xl text-white/80 leading-relaxed">
-          High-performance coaching from <span className="font-semibold text-white">seed to professional.</span>
-          <br className="hidden sm:block" />
-          Unlock your potential with Coach Mami.
+        <div className="max-w-xl border-l-4 border-bean-blue pl-8 mb-12">
+          <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed">
+            Technical mastery from <span className="text-white">seed to professional.</span> 
+            Experience the precision of Japanese-influenced coaching.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+          <Button
+            asChild
+            className="h-auto px-10 py-5 bg-bean-accent text-bean-dark font-black rounded-xl hover:bg-white transition-all text-lg uppercase shadow-2xl shadow-bean-accent/10"
+          >
+            <Link href="#contact" className="flex items-center gap-3">
+              Start Journey <ArrowRight size={22} strokeWidth={3} />
+            </Link>
+          </Button>
+          
+          <Link 
+            href="#coach" 
+            className="group flex items-center gap-4 text-xs font-black uppercase tracking-widest text-white/40 hover:text-bean-accent transition-colors"
+          >
+            <span className="w-10 h-[2px] bg-white/10 group-hover:w-16 group-hover:bg-bean-accent transition-all" />
+            The Methodology
+          </Link>
+        </div>
+      </div>
+
+      {/* 3. Refined Bottom Bento Bar */}
+      <div className="relative z-20 w-full bg-[#0D0F14]/80 backdrop-blur-xl border-t border-white/5 py-6">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8">
+          
+          {/* Stats Group */}
+          <div className="flex items-center gap-10 md:gap-16">
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-bean-blue/10 rounded-lg">
+                <ShieldCheck className="text-bean-blue" size={20} />
+              </div>
+              <div>
+                <p className="text-white font-black text-lg leading-none uppercase">JVA</p>
+                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Certified Coach</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-bean-accent/10 rounded-lg">
+                <Trophy className="text-bean-accent" size={20} />
+              </div>
+              <div>
+                <p className="text-white font-black text-lg leading-none uppercase">15+ Yrs</p>
+                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Global Experience</p>
+              </div>
+            </div>
+
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="p-2 bg-white/5 rounded-lg">
+                <Timer className="text-white/60" size={20} />
+              </div>
+              <div>
+                <p className="text-white font-black text-lg leading-none uppercase">24/48H</p>
+                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Response Time</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator - Vertical Alignment */}
+          <div className="flex items-center gap-6">
+            <div className="hidden sm:block h-[1px] w-24 bg-gradient-to-r from-transparent to-white/10" />
+            <div className="flex flex-col items-center group cursor-pointer">
+              <span className="text-[9px] text-white/30 font-black uppercase tracking-[0.4em] mb-2 group-hover:text-bean-accent transition-colors">
+                Scroll
+              </span>
+              <div className="animate-bounce">
+                <ChevronDown size={18} className="text-bean-accent" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Decorative Vertical Text - Moved deeper into the background */}
+      <div className="absolute right-[-4rem] top-1/2 -translate-y-1/2 opacity-[0.02] select-none pointer-events-none hidden 2xl:block">
+        <p className="text-[20rem] font-black writing-vertical-rl text-white uppercase tracking-tighter">
+          BEANS
         </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="#contact"
-            className="px-10 py-4 bg-bean-accent text-bean-dark font-bold rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] transition-all duration-300"
-          >
-            START YOUR JOURNEY
-          </Link>
-          <Link
-            href="#coach"
-            className="px-10 py-4 border-2 border-white/80 text-white font-bold rounded-full hover:bg-white hover:text-bean-dark transition-all duration-300"
-          >
-            MEET THE COACH
-          </Link>
-        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-white/60 tracking-widest uppercase">Scroll</span>
-        <div className="animate-bounce text-bean-accent">
-          <ChevronDown size={32} />
-        </div>
-      </div>
     </section>
   );
 }

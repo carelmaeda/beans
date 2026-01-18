@@ -1,25 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Instagram, Youtube, Facebook, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
-import Link from 'next/link';
+import { Instagram, Youtube, Facebook, Send, Loader2, CheckCircle, AlertCircle, Mail } from 'lucide-react';
 import { sendContactEmail } from '@/lib/emailjs';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const contactSchema = z.object({
-  from_name: z
-    .string()
-    .min(2, 'Name must be at least 2 characters')
-    .max(50, 'Name must be less than 50 characters'),
+  from_name: z.string().min(2, 'Name must be at least 2 characters').max(50, 'Name must be less than 50 characters'),
   athlete_age: z.string().optional(),
   from_email: z.string().email('Please enter a valid email address'),
-  inquiry_type: z.enum(['online-coaching', 'video-analysis', 'in-person', 'little-seeds', 'other'], 'Please select an inquiry type'),
-  goals: z
-    .string()
-    .min(10, 'Please tell us more about your goals (at least 10 characters)')
-    .max(1000, 'Message must be less than 1000 characters'),
+  inquiry_type: z.enum(['online-coaching', 'video-analysis', 'in-person', 'little-seeds', 'other'], {
+    message: 'Please select an inquiry type',
+  }),
+  goals: z.string().min(10, 'Please tell us more about your goals').max(1000, 'Message too long'),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -27,12 +33,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContactFormData>({
+  const { register, handleSubmit, reset, control, formState: { errors } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
@@ -55,261 +56,142 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-[var(--bean-black)]">
-      {/* Contact Form Section */}
-      <div className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Left Side - Info */}
-            <div>
-              <span className="inline-block px-4 py-2 bg-[var(--bean-yellow-bright)]/20 text-[var(--bean-yellow-bright)] rounded-full text-sm font-semibold mb-4">
-                The Harvest
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">
-                Ready to Grow?
-              </h2>
-              <p className="text-lg text-gray-400 mb-8">
-                Take the first step toward your volleyball dreams. Fill out the form and Coach Mami will
-                personally respond within 24-48 hours.
+    <section id="contact" className="py-24 bg-bean-dark px-6">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header - Bold Dark Style */}
+        <div className="mb-16">
+          <span className="inline-block px-4 py-1.5 bg-bean-accent/20 text-bean-accent rounded-full text-[10px] font-black tracking-widest uppercase mb-4">
+            The Harvest
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase">
+            READY TO <span className="text-bean-blue">GROW?</span>
+          </h2>
+          <div className="w-20 h-2 bg-bean-accent rounded-full" />
+        </div>
+
+        {/* Contact Bento Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+          
+          {/* Left: Branding & Info (5 Cols) */}
+          <div className="lg:col-span-5 bg-bean-blue rounded-[3rem] p-10 md:p-14 text-white flex flex-col justify-between overflow-hidden relative group shadow-2xl">
+            {/* Vertical Japanese Watermark */}
+            <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:block select-none opacity-[0.1] pointer-events-none">
+              <p className="text-[7rem] font-black writing-vertical-rl tracking-widest uppercase">
+                成長と種
+              </p>
+            </div>
+
+            <div className="relative z-10">
+              <h3 className="text-3xl font-black tracking-tight uppercase mb-6 leading-none">
+                Direct <br />
+                Mentorship
+              </h3>
+              <p className="text-white/80 font-medium leading-relaxed mb-12 max-w-xs">
+                Coach Mami personally reviews every application to ensure elite technical standards.
               </p>
 
-              {/* Contact Info */}
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[var(--bean-blue-primary)] rounded-full flex items-center justify-center">
-                    <Send className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Email us at</p>
-                    <a
-                      href="mailto:info@beansvolleyball.com"
-                      className="text-white font-medium hover:text-[var(--bean-yellow-bright)] transition-colors"
-                    >
-                      info@beansvolleyball.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://instagram.com/beansvolleyball"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow us on Instagram"
-                  className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[var(--bean-yellow-bright)] hover:text-[var(--bean-black)] transition-all"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://youtube.com/@beansvolleyball"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Subscribe on YouTube"
-                  className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[var(--bean-yellow-bright)] hover:text-[var(--bean-black)] transition-all"
-                >
-                  <Youtube className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://facebook.com/beansvolleyball"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Like us on Facebook"
-                  className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-[var(--bean-yellow-bright)] hover:text-[var(--bean-black)] transition-all"
-                >
-                  <Facebook className="w-5 h-5" />
+              <div className="space-y-4">
+                <p className="text-[10px] font-black text-bean-accent tracking-[0.3em] uppercase">Inquiries</p>
+                <a href="mailto:info@beansvolleyball.com" className="text-xl md:text-2xl font-black hover:text-bean-accent transition-colors block border-b border-white/20 pb-4">
+                  info@beansvolleyball.com
                 </a>
               </div>
             </div>
 
-            {/* Right Side - Form */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8">
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                {/* Full Name */}
-                <div>
-                  <label htmlFor="from_name" className="block text-sm font-medium text-gray-400 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="from_name"
+            <div className="flex gap-4 mt-12 relative z-10">
+              {[Instagram, Youtube, Facebook].map((Icon, i) => (
+                <a key={i} href="#" className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-bean-accent hover:text-bean-dark transition-all">
+                  <Icon size={20} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: The Form (7 Cols) - Glassmorphism Style */}
+          <div className="lg:col-span-7 bg-white/5 backdrop-blur-sm rounded-[3rem] p-8 md:p-14 border border-white/10 shadow-2xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Athlete Name *</Label>
+                  <Input 
                     {...register('from_name')}
-                    className="w-full bg-transparent border-b border-gray-600 focus:border-[var(--bean-yellow-bright)] outline-none py-3 text-white placeholder-gray-500 transition-colors"
-                    placeholder="Your name"
+                    placeholder="Full Name"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
-                  {errors.from_name && (
-                    <p className="mt-1 text-sm text-red-400">{errors.from_name.message}</p>
-                  )}
+                  {errors.from_name && <p className="text-xs text-red-400 font-bold">{errors.from_name.message}</p>}
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="from_email" className="block text-sm font-medium text-gray-400 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="from_email"
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Email Address *</Label>
+                  <Input 
                     {...register('from_email')}
-                    className="w-full bg-transparent border-b border-gray-600 focus:border-[var(--bean-yellow-bright)] outline-none py-3 text-white placeholder-gray-500 transition-colors"
-                    placeholder="your@email.com"
+                    placeholder="email@example.com"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
-                  {errors.from_email && (
-                    <p className="mt-1 text-sm text-red-400">{errors.from_email.message}</p>
-                  )}
+                  {errors.from_email && <p className="text-xs text-red-400 font-bold">{errors.from_email.message}</p>}
                 </div>
+              </div>
 
-                {/* Athlete Age */}
-                <div>
-                  <label htmlFor="athlete_age" className="block text-sm font-medium text-gray-400 mb-2">
-                    Athlete Age
-                  </label>
-                  <input
-                    type="text"
-                    id="athlete_age"
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Athlete Age</Label>
+                  <Input 
                     {...register('athlete_age')}
-                    className="w-full bg-transparent border-b border-gray-600 focus:border-[var(--bean-yellow-bright)] outline-none py-3 text-white placeholder-gray-500 transition-colors"
-                    placeholder="e.g., 14 years old"
+                    placeholder="e.g. 17"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
                 </div>
 
-                {/* Inquiry Type */}
-                <div>
-                  <label htmlFor="inquiry_type" className="block text-sm font-medium text-gray-400 mb-2">
-                    Inquiry Type *
-                  </label>
-                  <select
-                    id="inquiry_type"
-                    {...register('inquiry_type')}
-                    className="w-full bg-transparent border-b border-gray-600 focus:border-[var(--bean-yellow-bright)] outline-none py-3 text-white transition-colors cursor-pointer"
-                  >
-                    <option value="" className="bg-[var(--bean-black)]">
-                      Select an option
-                    </option>
-                    <option value="online-coaching" className="bg-[var(--bean-black)]">
-                      Online Coaching
-                    </option>
-                    <option value="video-analysis" className="bg-[var(--bean-black)]">
-                      Video Analysis
-                    </option>
-                    <option value="in-person" className="bg-[var(--bean-black)]">
-                      In-Person Training
-                    </option>
-                    <option value="little-seeds" className="bg-[var(--bean-black)]">
-                      Little Seeds Program
-                    </option>
-                    <option value="other" className="bg-[var(--bean-black)]">
-                      Other
-                    </option>
-                  </select>
-                  {errors.inquiry_type && (
-                    <p className="mt-1 text-sm text-red-400">{errors.inquiry_type.message}</p>
-                  )}
-                </div>
-
-                {/* Goals */}
-                <div>
-                  <label htmlFor="goals" className="block text-sm font-medium text-gray-400 mb-2">
-                    Goals & Questions *
-                  </label>
-                  <textarea
-                    id="goals"
-                    {...register('goals')}
-                    rows={4}
-                    className="w-full bg-transparent border-b border-gray-600 focus:border-[var(--bean-yellow-bright)] outline-none py-3 text-white placeholder-gray-500 transition-colors resize-none"
-                    placeholder="Tell us about your volleyball goals and any questions you have..."
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Program Interest *</Label>
+                  <Controller
+                    name="inquiry_type"
+                    control={control}
+                    render={({ field }) => (
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <SelectTrigger className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus:ring-0 focus:border-bean-accent">
+                          <SelectValue placeholder="Choose Service" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-bean-dark border-white/10 text-white">
+                          <SelectItem value="online-coaching">Online Coaching</SelectItem>
+                          <SelectItem value="video-analysis">Video Analysis</SelectItem>
+                          <SelectItem value="in-person">In-Person Training</SelectItem>
+                          <SelectItem value="little-seeds">Little Seeds</SelectItem>
+                          <SelectItem value="other">Other Inquiry</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
                   />
-                  {errors.goals && <p className="mt-1 text-sm text-red-400">{errors.goals.message}</p>}
                 </div>
+              </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={submitStatus === 'loading'}
-                  className="w-full bg-[var(--bean-yellow-bright)] text-[var(--bean-black)] py-4 rounded-full font-bold text-lg hover:bg-[var(--bean-yellow-primary)] transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
-                >
-                  {submitStatus === 'loading' ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : submitStatus === 'success' ? (
-                    <>
-                      <CheckCircle className="w-5 h-5" />
-                      Message Sent!
-                    </>
-                  ) : submitStatus === 'error' ? (
-                    <>
-                      <AlertCircle className="w-5 h-5" />
-                      Try Again
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Send Message
-                    </>
-                  )}
-                </button>
+              <div className="space-y-2">
+                <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">What are your goals? *</Label>
+                <Textarea 
+                  {...register('goals')}
+                  placeholder="Tell us what you want to achieve..."
+                  className="bg-white/5 border border-white/10 rounded-3xl h-32 text-white focus-visible:ring-0 focus-visible:border-bean-accent p-6 resize-none"
+                />
+              </div>
 
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <p className="text-center text-green-400 text-sm">
-                    Thank you! Coach Mami will be in touch soon.
-                  </p>
+              <Button
+                type="submit"
+                disabled={submitStatus === 'loading'}
+                className="w-full bg-bean-accent text-bean-dark hover:bg-white py-8 rounded-[2rem] font-black text-xl uppercase tracking-tighter transition-all active:scale-95 disabled:opacity-50 h-auto shadow-xl"
+              >
+                {submitStatus === 'loading' ? (
+                  <Loader2 className="animate-spin" size={24} />
+                ) : submitStatus === 'success' ? (
+                  <div className="flex items-center gap-2"><CheckCircle size={24}/> APPLICATION SENT</div>
+                ) : (
+                  <div className="flex items-center gap-2">SEND APPLICATION <Send size={20}/></div>
                 )}
-                {submitStatus === 'error' && (
-                  <p className="text-center text-red-400 text-sm">
-                    Something went wrong. Please try again or email us directly.
-                  </p>
-                )}
-              </form>
-            </div>
+              </Button>
+            </form>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Logo */}
-            <Link href="#" className="flex items-center gap-2">
-              <div className="h-8 aspect-square">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                  <defs>
-                    <linearGradient id="beanGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="var(--bean-yellow-bright)" />
-                      <stop offset="100%" stopColor="var(--bean-yellow-primary)" />
-                    </linearGradient>
-                  </defs>
-                  <ellipse cx="50" cy="50" rx="30" ry="40" fill="url(#beanGradientFooter)" transform="rotate(20 50 50)" />
-                  <ellipse cx="48" cy="45" rx="8" ry="12" fill="white" opacity="0.3" transform="rotate(20 48 45)" />
-                </svg>
-              </div>
-              <span className="font-bold text-white text-xl">BEANS</span>
-            </Link>
-
-            {/* Copyright */}
-            <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} BEANS Volleyball. All rights reserved.
-            </p>
-
-            {/* Nav Links */}
-            <nav className="flex items-center gap-6">
-              <Link href="#coach" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Coach
-              </Link>
-              <Link href="#services" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Services
-              </Link>
-              <Link href="#values" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Values
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </footer>
     </section>
   );
 }

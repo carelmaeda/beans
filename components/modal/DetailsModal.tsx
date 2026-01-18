@@ -1,5 +1,14 @@
-import { X, Calendar, CheckCircle2, DollarSign, Target } from 'lucide-react';
+import { Calendar, CheckCircle2, DollarSign, Target } from 'lucide-react';
 import Link from 'next/link';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,31 +21,44 @@ interface ModalProps {
 }
 
 export default function DetailsModal({ isOpen, onClose, title, content, price, features, outcome }: ModalProps) {
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-bean-dark/95 backdrop-blur-md">
-      <div className="relative w-full max-w-4xl bg-white rounded-[2rem] overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
-        
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className="w-full max-w-4xl p-0 overflow-hidden bg-white rounded-[2rem] max-h-[90vh] overflow-y-auto"
+      >
         {/* Header Section */}
-        <div className="bg-bean-blue p-8 md:p-10 text-white relative">
+        <DialogHeader className="bg-bean-blue p-8 md:p-10 text-white relative">
           <div className="flex justify-between items-start">
             <div>
               <span className="bg-white/20 px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">Service Details</span>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-4 leading-none">{title}</h2>
+              <DialogTitle className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-4 leading-none text-white">
+                {title}
+              </DialogTitle>
+              <DialogDescription className="sr-only">
+                Details about the {title} service
+              </DialogDescription>
             </div>
-            <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
-              <X size={32} />
-            </button>
+            <DialogClose asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/10 rounded-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+                </svg>
+              </Button>
+            </DialogClose>
           </div>
-          
+
           {price && (
             <div className="mt-8 inline-flex items-center gap-2 bg-bean-accent text-bean-dark px-6 py-3 rounded-2xl shadow-lg">
               <DollarSign size={24} strokeWidth={3} />
               <span className="text-2xl font-black">{price}</span>
             </div>
           )}
-        </div>
+        </DialogHeader>
 
         {/* Body Section */}
         <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12">
@@ -81,17 +103,20 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
               </div>
             </div>
 
-            <Link 
-              href="#contact" 
-              onClick={onClose}
-              className="flex items-center justify-center gap-4 w-full py-6 bg-bean-accent text-bean-dark font-black rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-xl text-xl uppercase tracking-tight group"
-            >
-              <Calendar size={28} className="group-hover:rotate-12 transition-transform" />
-              Book This Session
-            </Link>
+            <DialogClose asChild>
+              <Button
+                asChild
+                className="flex items-center justify-center gap-4 w-full py-6 bg-bean-accent text-bean-dark font-black rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-xl text-xl uppercase tracking-tight group h-auto"
+              >
+                <Link href="#contact">
+                  <Calendar size={28} className="group-hover:rotate-12 transition-transform" />
+                  Book This Session
+                </Link>
+              </Button>
+            </DialogClose>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
