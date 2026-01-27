@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, ShieldCheck, Trophy, Timer } from 'lucide-react';
+import {  ArrowRight, ShieldCheck, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Hero() {
@@ -21,27 +21,27 @@ export default function Hero() {
       />
 
       {/* 2. Main Hero Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-6 w-full pt-20 pb-12">
-        <div className="flex items-center gap-4 mb-6">
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-5xl mx-auto px-6 w-full pt-20 pb-10">
+        <div className="flex items-center gap-3 mb-5">
           <span className="px-3 py-1 bg-bean-blue text-[10px] font-black tracking-[0.3em] uppercase text-white rounded-sm">
             Elite Mentorship
           </span>
           <div className="h-[2px] w-12 bg-bean-accent" />
         </div>
 
-        <h1 className="text-[14vw] md:text-[8rem] font-black text-white leading-[0.8] tracking-tighter uppercase mb-10">
+        <h1 className="text-[14vw] md:text-[7rem] font-black text-white leading-[0.8] tracking-tighter uppercase mb-8">
           SEED <br />
           TO <br />
           <span className="text-bean-accent italic drop-shadow-[0_0_20px_rgba(242,201,76,0.2)]">PRO</span>
         </h1>
 
-        <div className="max-w-xl border-l-4 border-bean-blue pl-8 mb-12">
+        <div className="max-w-xl border-l-4 border-bean-blue pl-6 mb-10">
           <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed">
          Hi!   I&apos;m Mami. <span className="text-white">Let&apos;s grow your game.</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <Button
             asChild
             className="h-auto px-10 py-5 bg-bean-accent text-bean-dark font-black rounded-xl hover:bg-white transition-all text-lg uppercase shadow-2xl shadow-bean-accent/10"
@@ -62,11 +62,11 @@ export default function Hero() {
       </div>
 
       {/* 3. Refined Bottom Bento Bar */}
-      <div className="relative z-20 w-full bg-[#0D0F14]/80 backdrop-blur-xl border-t border-white/5 py-6">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8">
-          
+      <div className="relative z-20 w-full bg-[#0D0F14]/80 backdrop-blur-xl border-t border-white/5 py-5">
+        <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-between gap-6">
+
           {/* Stats Group */}
-          <div className="flex items-center gap-10 md:gap-16">
+          <div className="flex items-center gap-8 md:gap-12">
             <div className="flex items-center gap-4">
               <div className="p-2 bg-bean-blue/10 rounded-lg">
                 <ShieldCheck className="text-bean-blue" size={20} />

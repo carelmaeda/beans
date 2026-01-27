@@ -42,11 +42,11 @@ export default function Navbar() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="h-10 aspect-square flex items-center justify-center">
+            <div className="h-8 aspect-square flex items-center justify-center">
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                 <defs>
                   <linearGradient id="beanGradientNav" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -58,23 +58,23 @@ export default function Navbar() {
                 <ellipse cx="48" cy="45" rx="8" ry="12" fill="white" opacity="0.3" transform="rotate(20 48 45)" />
               </svg>
             </div>
-            <span className="font-bold text-[var(--bean-blue-primary)] text-2xl">BEANS</span>
+            <span className="font-bold text-[var(--bean-blue-primary)] text-xl">BEANS</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium transition-colors"
+                className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium text-sm transition-colors"
               >
                 {link.label}
               </Link>
             ))}
             <Button
               asChild
-              className="bg-[var(--bean-blue-primary)] text-white px-6 py-2 rounded-full font-semibold hover:bg-[var(--bean-blue-dark)] transition-all hover:scale-105"
+              className="bg-[var(--bean-blue-primary)] text-white px-5 py-1.5 rounded-full font-semibold text-sm hover:bg-[var(--bean-blue-dark)] transition-all hover:scale-105"
             >
               <Link href="#contact">Apply</Link>
             </Button>

@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle2, DollarSign, Target } from 'lucide-react';
+import { Calendar, CheckCircle2, Sparkles, X } from 'lucide-react';
 import Link from 'next/link';
 import {
   Dialog,
@@ -25,96 +25,79 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         showCloseButton={false}
-        className="w-full max-w-4xl p-0 overflow-hidden bg-white rounded-[2rem] max-h-[90vh] overflow-y-auto"
+        className="w-full max-w-lg p-0 overflow-hidden bg-white rounded-3xl max-h-[85vh] flex flex-col"
       >
-        {/* Header Section */}
-        <DialogHeader className="bg-bean-blue p-8 md:p-10 text-white relative">
-          <div className="flex justify-between items-start">
+        {/* Header */}
+        <DialogHeader className="bg-bean-blue px-5 py-4 text-white relative flex-shrink-0">
+          <DialogClose asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-3 right-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full w-8 h-8"
+            >
+              <X size={18} />
+            </Button>
+          </DialogClose>
+
+          <div className="flex items-center justify-between pr-10">
             <div>
-              <span className="bg-white/20 px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">Details</span>
-              <DialogTitle className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-4 leading-none text-white">
+              <DialogTitle className="text-xl font-black tracking-tight uppercase text-white">
                 {title}
               </DialogTitle>
-              <DialogDescription className="sr-only">
-                Details about the {title} service
+              <DialogDescription className="text-white/60 text-sm mt-0.5">
+                {content}
               </DialogDescription>
             </div>
-            <DialogClose asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/10 rounded-full"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 6 6 18" /><path d="m6 6 12 12" />
-                </svg>
-              </Button>
-            </DialogClose>
-          </div>
-
-          {price && (
-            <div className="mt-8 inline-flex items-center gap-2 bg-bean-accent text-bean-dark px-6 py-3 rounded-2xl shadow-lg">
-              <DollarSign size={24} strokeWidth={3} />
-              <span className="text-2xl font-black">{price}</span>
-            </div>
-          )}
-        </DialogHeader>
-
-        {/* Body Section */}
-        <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12">
-          {/* Left: Info & Features */}
-          <div className="space-y-10">
-            <div>
-              <h4 className="text-bean-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
-                <Target size={18} /> What You Get
-              </h4>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium">
-                {content}
-              </p>
-            </div>
-
-            {features && (
-              <div>
-                <h4 className="text-bean-blue font-black uppercase text-xs tracking-widest mb-4">Included</h4>
-                <ul className="grid grid-cols-1 gap-3">
-                  {features.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-bean-dark font-bold bg-gray-50 p-3 rounded-xl border border-gray-100">
-                      <CheckCircle2 size={20} className="text-bean-accent flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+            {price && (
+              <div className="flex items-baseline gap-0.5 bg-bean-accent text-bean-dark px-3 py-1.5 rounded-xl">
+                <span className="text-xs font-bold">$</span>
+                <span className="text-xl font-black">{price}</span>
               </div>
             )}
           </div>
+        </DialogHeader>
 
-          {/* Right: Outcome & CTA */}
-          <div className="flex flex-col justify-between">
-            <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-dashed border-gray-200 relative mb-8">
-              <h4 className="text-bean-dark font-black uppercase text-[10px] tracking-[0.2em] mb-4">The Result</h4>
-              <p className="text-gray-600 italic leading-relaxed mb-6 font-medium text-sm">
+        {/* Scrollable Body */}
+        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+          {/* Features */}
+          {features && (
+            <div className="grid grid-cols-2 gap-2">
+              {features.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 bg-gray-50 px-3 py-2.5 rounded-xl border border-gray-100"
+                >
+                  <CheckCircle2 size={14} className="text-bean-blue flex-shrink-0" />
+                  <span className="text-bean-dark font-semibold text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Outcome */}
+          {outcome && (
+            <div className="bg-bean-blue/5 border border-bean-blue/10 px-4 py-3 rounded-xl flex gap-3">
+              <Sparkles size={16} className="text-bean-accent flex-shrink-0 mt-0.5" />
+              <p className="text-bean-dark/80 text-sm leading-relaxed">
                 {outcome}
               </p>
-              <div className="space-y-2">
-                <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-bean-blue w-[85%] rounded-full" />
-                </div>
-                <p className="text-[10px] font-black text-bean-blue uppercase tracking-widest text-right">Growth Potential: +85%</p>
-              </div>
             </div>
+          )}
+        </div>
 
-            <DialogClose asChild>
-              <Button
-                asChild
-                className="flex items-center justify-center gap-4 w-full py-6 bg-bean-accent text-bean-dark font-black rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-xl text-xl uppercase tracking-tight group h-auto"
-              >
-                <Link href="#contact">
-                  <Calendar size={28} className="group-hover:rotate-12 transition-transform" />
-                  Book Now
-                </Link>
-              </Button>
-            </DialogClose>
-          </div>
+        {/* Footer CTA */}
+        <div className="p-5 pt-0 flex-shrink-0">
+          <DialogClose asChild>
+            <Button
+              asChild
+              className="flex items-center justify-center gap-2 w-full py-4 bg-bean-accent text-bean-dark font-black rounded-xl hover:bg-bean-accent/90 active:scale-[0.98] transition-all shadow-lg uppercase tracking-tight group h-auto"
+            >
+              <Link href="#contact">
+                <Calendar size={18} className="group-hover:rotate-12 transition-transform" />
+                Book Now
+              </Link>
+            </Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog>

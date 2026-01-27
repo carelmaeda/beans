@@ -56,101 +56,100 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-bean-dark px-6">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Section Header - Bold Dark Style */}
-        <div className="mb-16">
-          <span className="inline-block px-4 py-1.5 bg-bean-accent/20 text-bean-accent rounded-full text-[10px] font-black tracking-widest uppercase mb-4">
+    <section id="contact" className="py-16 md:py-20 bg-bean-dark px-6">
+      <div className="max-w-5xl mx-auto">
+
+        {/* Section Header */}
+        <div className="mb-10">
+          <span className="inline-block px-3 py-1 bg-bean-accent/20 text-bean-accent rounded-full text-[10px] font-black tracking-widest uppercase mb-3">
             Apply Now
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase">
+          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter mb-3 uppercase">
             WORK WITH <span className="text-bean-blue">ME</span>
           </h2>
-          <div className="w-20 h-2 bg-bean-accent rounded-full" />
+          <div className="w-16 h-1.5 bg-bean-accent rounded-full" />
         </div>
 
-        {/* Contact Bento Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+        {/* Contact Grid */}
+        <div className="grid lg:grid-cols-12 gap-6 items-stretch">
           
-          {/* Left: Branding & Info (5 Cols) */}
-          <div className="lg:col-span-5 bg-bean-blue rounded-[3rem] p-10 md:p-14 text-white flex flex-col justify-between overflow-hidden relative group shadow-2xl">
+          {/* Left: Branding & Info */}
+          <div className="lg:col-span-5 bg-bean-blue rounded-2xl p-6 md:p-8 text-white flex flex-col justify-between overflow-hidden relative group shadow-xl">
             {/* Vertical Japanese Watermark */}
-            <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:block select-none opacity-[0.1] pointer-events-none">
-              <p className="text-[7rem] font-black writing-vertical-rl tracking-widest uppercase">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden md:block select-none opacity-[0.08] pointer-events-none">
+              <p className="text-[5rem] font-black writing-vertical-rl tracking-widest uppercase">
                 成長と種
               </p>
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-3xl font-black tracking-tight uppercase mb-6 leading-none">
-                Train <br />
-                With Mami
+              <h3 className="text-2xl font-black tracking-tight uppercase mb-4 leading-none">
+                Train With Mami
               </h3>
-              <p className="text-white/80 font-medium leading-relaxed mb-12 max-w-xs">
+              <p className="text-white/80 font-medium leading-relaxed mb-8 max-w-xs text-sm">
                 I review every application personally. Serious athletes only.
               </p>
 
-              <div className="space-y-4">
-                <p className="text-[10px] font-black text-bean-accent tracking-[0.3em] uppercase">Inquiries</p>
-                <a href="mailto:info@beansvolleyball.com" className="text-xl md:text-2xl font-black hover:text-bean-accent transition-colors block border-b border-white/20 pb-4">
+              <div className="space-y-3">
+                <p className="text-[9px] font-black text-bean-accent tracking-[0.2em] uppercase">Inquiries</p>
+                <a href="mailto:info@beansvolleyball.com" className="text-lg font-black hover:text-bean-accent transition-colors block border-b border-white/20 pb-3">
                   info@beansvolleyball.com
                 </a>
               </div>
             </div>
 
-            <div className="flex gap-4 mt-12 relative z-10">
+            <div className="flex gap-3 mt-8 relative z-10">
               {[Instagram, Youtube, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-bean-accent hover:text-bean-dark transition-all">
-                  <Icon size={20} />
+                <a key={i} href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-bean-accent hover:text-bean-dark transition-all">
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Right: The Form (7 Cols) - Glassmorphism Style */}
-          <div className="lg:col-span-7 bg-white/5 backdrop-blur-sm rounded-[3rem] p-8 md:p-14 border border-white/10 shadow-2xl">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Athlete Name *</Label>
-                  <Input 
+          {/* Right: The Form */}
+          <div className="lg:col-span-7 bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <Label className="text-[9px] font-black uppercase tracking-widest text-bean-accent">Athlete Name *</Label>
+                  <Input
                     {...register('from_name')}
                     placeholder="Full Name"
-                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-10 text-white text-sm focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
                   {errors.from_name && <p className="text-xs text-red-400 font-bold">{errors.from_name.message}</p>}
                 </div>
 
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Email Address *</Label>
-                  <Input 
+                <div className="space-y-1.5">
+                  <Label className="text-[9px] font-black uppercase tracking-widest text-bean-accent">Email Address *</Label>
+                  <Input
                     {...register('from_email')}
                     placeholder="email@example.com"
-                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-10 text-white text-sm focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
                   {errors.from_email && <p className="text-xs text-red-400 font-bold">{errors.from_email.message}</p>}
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Athlete Age</Label>
-                  <Input 
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <Label className="text-[9px] font-black uppercase tracking-widest text-bean-accent">Athlete Age</Label>
+                  <Input
                     {...register('athlete_age')}
                     placeholder="e.g. 17"
-                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
+                    className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-10 text-white text-sm focus-visible:ring-0 focus-visible:border-bean-accent transition-colors placeholder:text-white/20"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">Program Interest *</Label>
+                <div className="space-y-1.5">
+                  <Label className="text-[9px] font-black uppercase tracking-widest text-bean-accent">Program Interest *</Label>
                   <Controller
                     name="inquiry_type"
                     control={control}
                     render={({ field }) => (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-12 text-white focus:ring-0 focus:border-bean-accent">
+                        <SelectTrigger className="bg-transparent border-0 border-b-2 border-white/20 rounded-none h-10 text-white text-sm focus:ring-0 focus:border-bean-accent">
                           <SelectValue placeholder="Choose Service" />
                         </SelectTrigger>
                         <SelectContent className="bg-bean-dark border-white/10 text-white">
@@ -166,19 +165,19 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">What are your goals? *</Label>
+              <div className="space-y-1.5">
+                <Label className="text-[9px] font-black uppercase tracking-widest text-bean-accent">What are your goals? *</Label>
                 <Textarea
                   {...register('goals')}
                   placeholder="What do you want to achieve?"
-                  className="bg-white/5 border border-white/10 rounded-3xl h-32 text-white focus-visible:ring-0 focus-visible:border-bean-accent p-6 resize-none"
+                  className="bg-white/5 border border-white/10 rounded-xl h-24 text-white text-sm focus-visible:ring-0 focus-visible:border-bean-accent p-4 resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={submitStatus === 'loading'}
-                className="w-full bg-bean-accent text-bean-dark hover:bg-white py-8 rounded-[2rem] font-black text-xl uppercase tracking-tighter transition-all active:scale-95 disabled:opacity-50 h-auto shadow-xl"
+                className="w-full bg-bean-accent text-bean-dark hover:bg-white py-5 rounded-xl font-black text-base uppercase tracking-tight transition-all active:scale-[0.98] disabled:opacity-50 h-auto shadow-lg"
               >
                 {submitStatus === 'loading' ? (
                   <Loader2 className="animate-spin" size={24} />
