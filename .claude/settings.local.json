@@ -4,7 +4,8 @@
       "Bash(npm run build:*)",
       "Bash(ls:*)",
       "Bash(npx next dev:*)",
-      "Bash(npx shadcn@latest add:*)"
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(Remove-Item -Path \"C:\\\\Users\\\\CarelMaedaAmbrosio\\\\Documents\\\\Repositories\\\\beans\\\\tmpclaude-*\" -Force)"
     ]
   }
 }

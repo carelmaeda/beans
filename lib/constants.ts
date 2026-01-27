@@ -3,7 +3,7 @@
  */
 
 export const SITE_NAME = 'BEANS Volleyball';
-export const SITE_TAGLINE = 'Where Talent Blooms into Greatness';
+export const SITE_TAGLINE = 'Seed to Pro';
 
 export const CONTACT_EMAIL = 'info@beansvolleyball.com';
 export const CONTACT_PHONE = '+1 (555) 123-4567'; // TODO: Replace with actual

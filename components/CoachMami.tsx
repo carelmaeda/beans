@@ -15,14 +15,13 @@ export default function CoachMami() {
         <div className="mb-16 flex items-end gap-6">
           <div>
             <h2 className="text-4xl md:text-5xl font-black text-bean-dark tracking-tighter mb-4 uppercase">
-              THE <span className="text-bean-blue">MENTOR</span>
+              About <span className="text-bean-blue">Me</span>
             </h2>
-            <div className="w-20 h-2 bg-bean-accent rounded-full" />
+              {/* Japanese Name */}
+          <p className="px-2 py-1 text-gray-400 font-bold text-2xl tracking-tighter leading-none uppercase">宮下マミ 
+          </p>
           </div>
-          {/* Hanko Seal Style Label */}
-          <div className="hidden sm:block mb-1 border-2 border-red-600 px-2 py-1 text-red-600 font-bold text-[10px] tracking-tighter leading-none uppercase">
-            真実 <br /> TRUTH
-          </div>
+        
         </div>
 
         <div className="grid lg:grid-cols-12 gap-8 items-stretch relative z-10">
@@ -35,8 +34,6 @@ export default function CoachMami() {
                 <p className="text-3xl font-black tracking-tighter uppercase leading-none">MAMI MIYASHITA</p>
                 <div className="flex items-center gap-3 mt-2">
                    <p className="text-bean-accent text-xs font-black tracking-widest uppercase">Professional Coach</p>
-                   <span className="text-white/40 text-xs">|</span>
-                   <p className="text-white/60 text-[10px] font-bold">宮下 真美</p>
                 </div>
               </div>
             </div>
@@ -50,10 +47,10 @@ export default function CoachMami() {
               <div className="relative">
                 <div className="p-3 w-fit bg-white rounded-xl shadow-sm text-bean-blue mb-4"><User size={24} /></div>
                 <h3 className="text-xl font-black text-bean-dark mb-2 uppercase tracking-tight flex items-center gap-3">
-                  Professional Path <span className="text-gray-300 text-xs font-normal">経歴</span>
+                  My Path <span className="text-gray-300 text-xs font-normal">経歴</span>
                 </h3>
                 <p className="text-gray-600 leading-relaxed font-medium">
-                  15+ years experience in the Japanese V-League and European circuits. Mami bridges Eastern defensive discipline with Western tactical power.
+                  15+ years in the V-League and Europe. I fuse Japanese discipline with Western power.
                 </p>
               </div>
             </div>
@@ -61,10 +58,10 @@ export default function CoachMami() {
             <div className="p-8 rounded-3xl border-2 border-gray-100 bg-gray-50/50">
               <div className="p-3 w-fit bg-white rounded-xl shadow-sm text-bean-blue mb-4"><Lightbulb size={24} /></div>
               <h3 className="text-xl font-black text-bean-dark mb-2 uppercase tracking-tight flex items-center gap-3">
-                The Growth Mindset <span className="text-gray-300 text-xs font-normal">哲学</span>
+                My Philosophy <span className="text-gray-300 text-xs font-normal">哲学</span>
               </h3>
               <p className="text-gray-600 leading-relaxed font-medium">
-                Her approach transforms beans into elite competitors. She believes high performance is built on intentional habits and cultural wisdom.
+                Every athlete is a seed. I build roots, shape habits, harvest champions.
               </p>
             </div>
 
@@ -72,19 +69,19 @@ export default function CoachMami() {
             <div className="p-8 rounded-3xl border-2 border-bean-accent/20 bg-bean-accent/5 relative overflow-hidden">
               <div className="relative z-10">
                 <div className="p-3 w-fit bg-white rounded-xl shadow-sm text-bean-blue mb-4"><Star size={24} /></div>
-                <h3 className="text-xl font-black text-bean-dark mb-4 uppercase tracking-tight">Technical Pillars</h3>
+                <h3 className="text-xl font-black text-bean-dark mb-4 uppercase tracking-tight">What I Bring</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-black text-bean-dark uppercase tracking-tight">
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-600 rounded-full" /> JVA Technical Standards
+                    <span className="w-2 h-2 bg-red-600 rounded-full" /> JVA Standards
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-600 rounded-full" /> Tactical Video Lab
+                    <span className="w-2 h-2 bg-red-600 rounded-full" /> Video Analysis
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-600 rounded-full" /> Global Pathway
+                    <span className="w-2 h-2 bg-red-600 rounded-full" /> Global Network
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-600 rounded-full" /> Mentorship
+                    <span className="w-2 h-2 bg-red-600 rounded-full" /> 1-on-1 Focus
                   </li>
                 </ul>
               </div>

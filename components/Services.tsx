@@ -8,29 +8,29 @@ const services = [
   {
     title: "Online Coaching",
     icon: <Monitor className="w-8 h-8" />,
-    desc: "Global mentorship and tactical growth from anywhere.",
-    detail: "Our online program provides high-performance tactical video calls and personalized mentorship. We bridge the gap between your location and international standards.",
+    desc: "Train with me from anywhere in the world.",
+    detail: "Weekly video calls where I break down your game and build your path forward.",
     price: "$120",
-    features: ["Weekly 1-on-1 Calls", "Personalized Roadmap", "Pathway Planning", "Mental Performance"],
-    outcome: "Develop the professional mindset and tactical IQ required to compete in international leagues."
+    features: ["Weekly 1-on-1 Calls", "Custom Roadmap", "Career Planning", "Mental Edge"],
+    outcome: "Build the mindset and IQ to dominate at the next level."
   },
   {
     title: "Video Lab",
     icon: <Video className="w-8 h-8" />,
-    desc: "Elite technical assessment using frame-by-frame analysis.",
-    detail: "We analyze your footage to identify biomechanical inefficiencies, providing a visual roadmap to professional-grade form.",
+    desc: "I dissect your technique frame-by-frame.",
+    detail: "Send me your footage. I find the flaws killing your power and show you how to fix them.",
     price: "$85",
-    features: ["Biomechanical Review", "Pro Comparison", "Voice-over Report", "Correction Drills"],
-    outcome: "Identify and fix hidden technical flaws in your swing that are holding back your power."
+    features: ["Frame Analysis", "Pro Comparison", "Voice Report", "Drill Prescriptions"],
+    outcome: "Unlock hidden power by fixing technical blind spots."
   },
   {
     title: "In-Person Training",
     icon: <MapPin className="w-8 h-8" />,
-    desc: "Hands-on, high-intensity coaching in elite facilities.",
-    detail: "Coach Mami provides sessions focused on technical execution, conditioning, and high-pressure game scenarios.",
+    desc: "Hands-on sessions. Real courts. Real intensity.",
+    detail: "I work with you directly—technical drills, conditioning, game pressure.",
     price: "$150",
-    features: ["Technical Drills", "Position Training", "Real-time Feedback", "Facility Access"],
-    outcome: "Experience the physical rigors of pro training with instant technical corrections."
+    features: ["Technical Drills", "Position Work", "Live Feedback", "Facility Access"],
+    outcome: "Feel what pro training demands. Grow faster with instant corrections."
   }
 ];
 
@@ -42,7 +42,7 @@ export default function Services() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-bean-dark tracking-tighter mb-4 uppercase">
-            CURRENT <span className="text-bean-blue">SERVICES</span>
+            HOW I <span className="text-bean-blue">COACH</span>
           </h2>
           <div className="w-20 h-2 bg-bean-accent rounded-full" />
         </div>

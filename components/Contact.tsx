@@ -62,10 +62,10 @@ export default function Contact() {
         {/* Section Header - Bold Dark Style */}
         <div className="mb-16">
           <span className="inline-block px-4 py-1.5 bg-bean-accent/20 text-bean-accent rounded-full text-[10px] font-black tracking-widest uppercase mb-4">
-            The Harvest
+            Apply Now
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase">
-            READY TO <span className="text-bean-blue">GROW?</span>
+            WORK WITH <span className="text-bean-blue">ME</span>
           </h2>
           <div className="w-20 h-2 bg-bean-accent rounded-full" />
         </div>
@@ -84,11 +84,11 @@ export default function Contact() {
 
             <div className="relative z-10">
               <h3 className="text-3xl font-black tracking-tight uppercase mb-6 leading-none">
-                Direct <br />
-                Mentorship
+                Train <br />
+                With Mami
               </h3>
               <p className="text-white/80 font-medium leading-relaxed mb-12 max-w-xs">
-                Coach Mami personally reviews every application to ensure elite technical standards.
+                I review every application personally. Serious athletes only.
               </p>
 
               <div className="space-y-4">
@@ -168,9 +168,9 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-bean-accent">What are your goals? *</Label>
-                <Textarea 
+                <Textarea
                   {...register('goals')}
-                  placeholder="Tell us what you want to achieve..."
+                  placeholder="What do you want to achieve?"
                   className="bg-white/5 border border-white/10 rounded-3xl h-32 text-white focus-visible:ring-0 focus-visible:border-bean-accent p-6 resize-none"
                 />
               </div>
@@ -183,9 +183,9 @@ export default function Contact() {
                 {submitStatus === 'loading' ? (
                   <Loader2 className="animate-spin" size={24} />
                 ) : submitStatus === 'success' ? (
-                  <div className="flex items-center gap-2"><CheckCircle size={24}/> APPLICATION SENT</div>
+                  <div className="flex items-center gap-2"><CheckCircle size={24}/> SENT</div>
                 ) : (
-                  <div className="flex items-center gap-2">SEND APPLICATION <Send size={20}/></div>
+                  <div className="flex items-center gap-2">APPLY NOW <Send size={20}/></div>
                 )}
               </Button>
             </form>

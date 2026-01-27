@@ -4,37 +4,37 @@ const roadmapItems = [
   {
     icon: Sprout,
     title: 'Little Seeds',
-    subtitle: 'Kindergarten Program',
-    description: 'Play-based fundamentals for the next generation.',
-    status: 'Coming Soon',
+    subtitle: 'Kids Program',
+    description: 'Fun fundamentals for young athletes.',
+    status: 'Planting',
   },
   {
     icon: Globe2,
     title: 'Global Clinics',
-    subtitle: 'International Training',
-    description: 'Intensive experiences in Japan and worldwide.',
-    status: 'Coming Soon',
+    subtitle: 'Train Abroad',
+    description: 'Intensive camps in Japan and beyond.',
+    status: 'Rooting',
   },
   {
     icon: BarChart3,
-    title: 'Technical Analytics',
-    subtitle: 'Performance Data',
-    description: 'Data-driven insights to optimize technique.',
-    status: 'In Development',
+    title: 'Analytics Hub',
+    subtitle: 'Data-Driven',
+    description: 'Numbers that sharpen your edge.',
+    status: 'Budding',
   },
   {
     icon: Dumbbell,
-    title: 'Physical Training',
-    subtitle: 'Strength & Conditioning',
-    description: 'Volleyball-specific athletic development.',
-    status: 'In Development',
+    title: 'Strength Lab',
+    subtitle: 'Physical Power',
+    description: 'Volleyball-specific conditioning.',
+    status: 'Growing',
   },
   {
     icon: Brain,
-    title: 'Mental Coaching',
-    subtitle: 'Sports Psychology',
-    description: 'Focus training and pressure management.',
-    status: 'Coming Soon',
+    title: 'Mental Game',
+    subtitle: 'Psychology',
+    description: 'Dominate pressure. Stay focused.',
+    status: 'Blooming',
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Roadmap() {
             The Greenhouse
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase">
-            FUTURE <span className="text-bean-blue">ROADMAP</span>
+            WHAT I&apos;M <span className="text-bean-blue">BUILDING</span>
           </h2>
           <div className="w-20 h-2 bg-bean-accent rounded-full md:mx-auto" />
         </div>

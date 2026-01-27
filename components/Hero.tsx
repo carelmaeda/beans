@@ -30,15 +30,14 @@ export default function Hero() {
         </div>
 
         <h1 className="text-[14vw] md:text-[8rem] font-black text-white leading-[0.8] tracking-tighter uppercase mb-10">
-          WHERE <br />
-          TALENT <br />
-          <span className="text-bean-accent italic drop-shadow-[0_0_20px_rgba(242,201,76,0.2)]">BLOOMS</span>
+          SEED <br />
+          TO <br />
+          <span className="text-bean-accent italic drop-shadow-[0_0_20px_rgba(242,201,76,0.2)]">PRO</span>
         </h1>
 
         <div className="max-w-xl border-l-4 border-bean-blue pl-8 mb-12">
           <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed">
-            Technical mastery from <span className="text-white">seed to professional.</span> 
-            Experience the precision of Japanese-influenced coaching.
+         Hi!   I&apos;m Mami. <span className="text-white">Let&apos;s grow your game.</span>
           </p>
         </div>
 
@@ -48,7 +47,7 @@ export default function Hero() {
             className="h-auto px-10 py-5 bg-bean-accent text-bean-dark font-black rounded-xl hover:bg-white transition-all text-lg uppercase shadow-2xl shadow-bean-accent/10"
           >
             <Link href="#contact" className="flex items-center gap-3">
-              Start Journey <ArrowRight size={22} strokeWidth={3} />
+              Start Now <ArrowRight size={22} strokeWidth={3} />
             </Link>
           </Button>
           
@@ -57,7 +56,7 @@ export default function Hero() {
             className="group flex items-center gap-4 text-xs font-black uppercase tracking-widest text-white/40 hover:text-bean-accent transition-colors"
           >
             <span className="w-10 h-[2px] bg-white/10 group-hover:w-16 group-hover:bg-bean-accent transition-all" />
-            The Methodology
+            About Me
           </Link>
         </div>
       </div>
@@ -74,7 +73,7 @@ export default function Hero() {
               </div>
               <div>
                 <p className="text-white font-black text-lg leading-none uppercase">JVA</p>
-                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Certified Coach</p>
+                <p className="text-white/30 uppercase font-black tracking-[0.1em] mt-1">Certified Coach</p>
               </div>
             </div>
 
@@ -84,33 +83,12 @@ export default function Hero() {
               </div>
               <div>
                 <p className="text-white font-black text-lg leading-none uppercase">15+ Yrs</p>
-                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Global Experience</p>
+                <p className=" text-white/30 uppercase font-black tracking-[0.1em] mt-1">Global Experience</p>
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="p-2 bg-white/5 rounded-lg">
-                <Timer className="text-white/60" size={20} />
-              </div>
-              <div>
-                <p className="text-white font-black text-lg leading-none uppercase">24/48H</p>
-                <p className="text-[9px] text-white/30 uppercase font-black tracking-[0.1em] mt-1">Response Time</p>
-              </div>
-            </div>
           </div>
 
-          {/* Scroll Indicator - Vertical Alignment */}
-          <div className="flex items-center gap-6">
-            <div className="hidden sm:block h-[1px] w-24 bg-gradient-to-r from-transparent to-white/10" />
-            <div className="flex flex-col items-center group cursor-pointer">
-              <span className="text-[9px] text-white/30 font-black uppercase tracking-[0.4em] mb-2 group-hover:text-bean-accent transition-colors">
-                Scroll
-              </span>
-              <div className="animate-bounce">
-                <ChevronDown size={18} className="text-bean-accent" />
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>

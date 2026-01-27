@@ -31,7 +31,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
         <DialogHeader className="bg-bean-blue p-8 md:p-10 text-white relative">
           <div className="flex justify-between items-start">
             <div>
-              <span className="bg-white/20 px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">Service Details</span>
+              <span className="bg-white/20 px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">Details</span>
               <DialogTitle className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-4 leading-none text-white">
                 {title}
               </DialogTitle>
@@ -66,7 +66,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
           <div className="space-y-10">
             <div>
               <h4 className="text-bean-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
-                <Target size={18} /> The Mission
+                <Target size={18} /> What You Get
               </h4>
               <p className="text-lg text-gray-600 leading-relaxed font-medium">
                 {content}
@@ -75,7 +75,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
 
             {features && (
               <div>
-                <h4 className="text-bean-blue font-black uppercase text-xs tracking-widest mb-4">What&apos;s Included</h4>
+                <h4 className="text-bean-blue font-black uppercase text-xs tracking-widest mb-4">Included</h4>
                 <ul className="grid grid-cols-1 gap-3">
                   {features.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-bean-dark font-bold bg-gray-50 p-3 rounded-xl border border-gray-100">
@@ -91,7 +91,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
           {/* Right: Outcome & CTA */}
           <div className="flex flex-col justify-between">
             <div className="bg-gray-50 p-8 rounded-[2rem] border-2 border-dashed border-gray-200 relative mb-8">
-              <h4 className="text-bean-dark font-black uppercase text-[10px] tracking-[0.2em] mb-4">Expected Outcome</h4>
+              <h4 className="text-bean-dark font-black uppercase text-[10px] tracking-[0.2em] mb-4">The Result</h4>
               <p className="text-gray-600 italic leading-relaxed mb-6 font-medium text-sm">
                 {outcome}
               </p>
@@ -99,7 +99,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
                 <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-bean-blue w-[85%] rounded-full" />
                 </div>
-                <p className="text-[10px] font-black text-bean-blue uppercase tracking-widest text-right">Performance Growth: +85%</p>
+                <p className="text-[10px] font-black text-bean-blue uppercase tracking-widest text-right">Growth Potential: +85%</p>
               </div>
             </div>
 
@@ -110,7 +110,7 @@ export default function DetailsModal({ isOpen, onClose, title, content, price, f
               >
                 <Link href="#contact">
                   <Calendar size={28} className="group-hover:rotate-12 transition-transform" />
-                  Book This Session
+                  Book Now
                 </Link>
               </Button>
             </DialogClose>

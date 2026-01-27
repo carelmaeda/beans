@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'BEANS Volleyball | Professional Mentorship by Coach Mami',
+    default: 'BEANS Volleyball | Coach Mami - Seed to Pro',
     template: `%s | ${SITE_NAME}`,
   },
   description: siteConfig.description,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     url: siteConfig.url,
     siteName: SITE_NAME,
-    title: 'BEANS Volleyball | Professional Mentorship by Coach Mami',
+    title: 'BEANS Volleyball | Coach Mami - Seed to Pro',
     description: siteConfig.description,
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BEANS Volleyball | Professional Mentorship by Coach Mami',
+    title: 'BEANS Volleyball | Coach Mami - Seed to Pro',
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },

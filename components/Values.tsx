@@ -4,7 +4,7 @@ const values = [
   {
     icon: Shield,
     title: 'Anti-Racism',
-    description: 'Creating a safe, inclusive environment where every athlete is valued and respected regardless of background.',
+    description: 'My court is safe. Every athlete is valued, respected, and welcome—no exceptions.',
     className: 'lg:col-span-4 lg:row-span-2 bg-bean-blue text-white',
     iconBg: 'bg-white/20',
     iconColor: 'text-white',
@@ -13,23 +13,23 @@ const values = [
   {
     icon: Globe,
     title: 'Multiculturalism',
-    description: 'Embracing global perspectives in training.',
+    description: 'Global perspectives make stronger players.',
     className: 'lg:col-span-4 bg-bean-accent/20 border-2 border-bean-accent/10',
     iconBg: 'bg-bean-accent',
     iconColor: 'text-bean-dark',
   },
   {
     icon: Sparkles,
-    title: 'Branding',
-    description: 'Building your personal professional presence.',
+    title: 'Your Brand',
+    description: 'I help you build your professional identity.',
     className: 'lg:col-span-4 bg-gray-50 border-2 border-gray-100',
     iconBg: 'bg-bean-blue',
     iconColor: 'text-white',
   },
   {
     icon: Heart,
-    title: 'Holistic Growth',
-    description: 'Character alongside athletic ability.',
+    title: 'Whole Athlete',
+    description: 'Character grows with your game.',
     className: 'lg:col-span-4 bg-blue-50 border-2 border-bean-blue/10',
     iconBg: 'bg-bean-blue',
     iconColor: 'text-white',
@@ -37,7 +37,7 @@ const values = [
   {
     icon: Users,
     title: 'Community',
-    description: 'Connections through the sport we love.',
+    description: 'We grow together through the sport.',
     className: 'lg:col-span-4 bg-bean-accent/10 border-2 border-bean-accent/20',
     iconBg: 'bg-bean-accent',
     iconColor: 'text-bean-dark',
@@ -45,7 +45,7 @@ const values = [
   {
     icon: Star,
     title: 'Excellence',
-    description: 'We pursue the highest standards in every technical drill and tactical session, ensuring your path to the professional leagues is built on a foundation of uncompromising quality.',
+    description: 'I demand the highest standards. Every drill, every session—precision matters. Your path to pro is built on quality.',
     className: 'lg:col-span-12 bg-gray-900 text-white',
     iconBg: 'bg-bean-accent',
     iconColor: 'text-bean-dark',
@@ -63,7 +63,7 @@ export default function Values() {
             The Foundation
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-bean-dark tracking-tighter mb-4 uppercase">
-            OUR <span className="text-bean-blue">VALUES</span>
+            WHAT I <span className="text-bean-blue">STAND FOR</span>
           </h2>
           <div className="w-20 h-2 bg-bean-accent rounded-full" />
         </div>

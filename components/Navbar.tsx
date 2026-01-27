@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/sheet';
 
 const navLinks = [
-  { label: 'Coach', href: '#coach' },
+  { label: 'About', href: '#coach' },
   { label: 'Services', href: '#services' },
   { label: 'Roadmap', href: '#roadmap' },
   { label: 'Values', href: '#values' },
@@ -76,7 +76,7 @@ export default function Navbar() {
               asChild
               className="bg-[var(--bean-blue-primary)] text-white px-6 py-2 rounded-full font-semibold hover:bg-[var(--bean-blue-dark)] transition-all hover:scale-105"
             >
-              <Link href="#contact">Get Started</Link>
+              <Link href="#contact">Apply</Link>
             </Button>
           </div>
 
@@ -112,7 +112,7 @@ export default function Navbar() {
                     asChild
                     className="bg-[var(--bean-blue-primary)] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[var(--bean-blue-dark)] transition-all mt-4"
                   >
-                    <Link href="#contact">Book a Call</Link>
+                    <Link href="#contact">Apply</Link>
                   </Button>
                 </SheetClose>
               </div>
