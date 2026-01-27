@@ -5,7 +5,9 @@
       "Bash(ls:*)",
       "Bash(npx next dev:*)",
       "Bash(npx shadcn@latest add:*)",
-      "Bash(Remove-Item -Path \"C:\\\\Users\\\\CarelMaedaAmbrosio\\\\Documents\\\\Repositories\\\\beans\\\\tmpclaude-*\" -Force)"
+      "Bash(Remove-Item -Path \"C:\\\\Users\\\\CarelMaedaAmbrosio\\\\Documents\\\\Repositories\\\\beans\\\\tmpclaude-*\" -Force)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
