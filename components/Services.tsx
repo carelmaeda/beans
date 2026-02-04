@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Monitor, Video, MapPin, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { Monitor, Video, MapPin, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -8,8 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 
 const services = [
   {
@@ -39,13 +39,13 @@ const services = [
     price: 150,
     priceNote: "Availability varies by location",
   },
-];
+]
 
 export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-bean-blue-light/60 px-6 py-12 md:py-16"
+      className="bg-bean-blue-light/60 relative overflow-hidden px-6 py-12 md:py-16"
     >
       {/* Texture */}
       <div
@@ -57,49 +57,50 @@ export default function Services() {
 
       <div className="relative mx-auto max-w-5xl">
         <header className="mb-9">
-          <h2 className="uppercase text-bean-black">
+          <h2 className="text-bean-black">
             How I <span className="text-bean-blue">Coach</span>
           </h2>
-          <p className="max-w-[60ch] text-bean-blue-dark/70">
+          <p className="text-bean-blue-dark/70 max-w-[60ch]">
             Three ways to train with me, based on your needs.
           </p>
         </header>
 
         <ul
-          className="mb-10 grid grid-cols-1 gap-5 md:grid-cols-3"
+          className="mb-10 grid grid-cols-1 gap-3 md:grid-cols-3"
           aria-label="Coaching services"
         >
           {services.map((s) => (
             <li key={s.title} className="h-full">
-              <Card className="group relative h-full rounded-3xl border-bean-blue/10 bg-white ring-bean-blue/10 shadow-[0_10px_40px_rgba(10,29,77,0.08)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_60px_rgba(10,29,77,0.14)]">
+              <Card className="group border-bean-blue/10 ring-bean-blue/10 relative h-full gap-3 rounded-xl bg-white shadow-[0_10px_40px_rgba(10,29,77,0.08)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_60px_rgba(10,29,77,0.14)]">
                 <div
-                  className="absolute inset-x-0 top-0 h-[3px] rounded-t-3xl bg-gradient-to-r from-bean-blue-primary via-bean-blue-primary to-bean-yellow-primary opacity-70"
+                  className="from-bean-blue-primary via-bean-blue-primary to-bean-yellow-primary absolute inset-x-0 top-0 h-[3px] rounded-t-3xl bg-gradient-to-r opacity-70"
                   aria-hidden="true"
                 />
 
                 <CardHeader className="pb-0">
-                  <div className="mb-4">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl border border-bean-blue/15 bg-bean-blue/10 text-bean-blue shadow-sm transition-all duration-300 group-hover:bg-bean-blue/12">
+                  <div className="flex items-center justify-start gap-3">
+                    <div className="border-bean-blue/15 bg-bean-blue/10 text-bean-blue group-hover:bg-bean-blue/12 grid h-12 w-12 place-items-center rounded-md border shadow-sm transition-all duration-300">
                       {s.icon}
                     </div>
+                    <CardTitle className="text-bean-black">
+                      <h3 className="h4 uppercase">{s.title}</h3>
+                    </CardTitle>
                   </div>
-                  <CardTitle className="uppercase text-bean-black">
-                    {s.title}
-                  </CardTitle>
-                  <CardDescription className="text-bean-blue-dark">
+
+                  <CardDescription className="text-bean-blue-dark hidden">
                     {s.outcome}
                   </CardDescription>
                 </CardHeader>
 
                 <CardContent>
-                  <p className="text-bean-blue-dark/70">{s.detail}</p>
+                  <p className="text-bean-blue-dark/70 small">{s.detail}</p>
                 </CardContent>
 
                 <CardFooter className="mt-auto flex-col items-stretch gap-0">
-                  <Separator className="mb-5 bg-bean-blue/10" />
+                  <Separator className="bg-bean-blue/10 mb-5" />
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <small className="uppercase tracking-[0.18em] text-bean-blue-dark/45">
+                      <small className="text-bean-blue-dark/45 tracking-[0.18em] uppercase">
                         Starting at
                       </small>
                       <p className="text-bean-black">
@@ -108,13 +109,13 @@ export default function Services() {
                         >
                           ${s.price}
                         </span>{" "}
-                        <small className="uppercase text-bean-blue-dark/45">
+                        <small className="text-bean-blue-dark/45 uppercase">
                           CAD
                         </small>
                       </p>
                     </div>
 
-                    <p className="max-w-[18ch] text-right text-bean-blue-dark/55">
+                    <p className="text-bean-blue-dark/55 max-w-[18ch] text-right">
                       {s.priceNote}
                     </p>
                   </div>
@@ -130,12 +131,8 @@ export default function Services() {
               Book a Call <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
           </Button>
-
-          <p className="mt-3 text-bean-blue-dark/60">
-            I&apos;ll recommend the best option after we talk.
-          </p>
         </div>
       </div>
     </section>
-  );
+  )
 }

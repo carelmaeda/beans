@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/ui/accordion"
 
 const faqs = [
   {
@@ -33,23 +33,13 @@ const faqs = [
     answer:
       "If you train consistently, you'll usually feel changes in 4–8 weeks. Book a call with me and I'll map out a realistic timeline.",
   },
-  {
-    question: "Is this too intense for me?",
-    answer:
-      "I push you, but I also support you. I adapt the intensity to your level while keeping the standards high. Book a call with me and we'll decide together.",
-  },
-  {
-    question: "How much does it cost?",
-    answer:
-      "It depends on what you need (analysis, online coaching, or in-person). Book a call with me and I'll recommend the best option for your goals and budget.",
-  },
-];
+]
 
 export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative bg-bean-blue-light px-6 py-12 md:py-16"
+      className="bg-bean-blue-light relative px-6 py-12 md:py-16"
     >
       <div className="mx-auto max-w-3xl">
         <header className="mb-9 text-center">
@@ -57,7 +47,7 @@ export default function FAQ() {
             Common <span className="text-bean-blue">Questions</span>
           </h2>
           <p className="text-bean-blue-dark/70">
-            If you don't see your question here, book a call with me.
+            If you don&apos;t see your question here, book a call with me.
           </p>
         </header>
 
@@ -70,16 +60,16 @@ export default function FAQ() {
             <AccordionItem
               key={index}
               value={`faq-${index}`}
-              className="relative overflow-hidden rounded-2xl border border-bean-blue/15 bg-white shadow-sm transition-all duration-300 hover:border-bean-blue/30 data-[state=open]:border-bean-blue/30 data-[state=open]:shadow-[0_12px_40px_rgba(10,29,77,0.12)]"
+              className="border-bean-blue/15 hover:border-bean-blue/30 data-[state=open]:border-bean-blue/30 relative overflow-hidden rounded-2xl border bg-white shadow-sm transition-all duration-300 data-[state=open]:shadow-[0_12px_40px_rgba(10,29,77,0.12)]"
             >
               <div
-                className="absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-bean-accent opacity-0 transition-opacity duration-300 [[data-state=open]>&]:opacity-100"
+                className="bg-bean-accent absolute top-0 left-0 h-full w-1 rounded-l-2xl opacity-0 transition-opacity duration-300 [[data-state=open]>&]:opacity-100"
                 aria-hidden="true"
               />
-              <AccordionTrigger className="px-5 py-4 text-left hover:no-underline [&>svg]:text-bean-blue">
-                <h3 className="pr-4 text-bean-black">{faq.question}</h3>
+              <AccordionTrigger className="[&>svg]:text-bean-blue px-5 py-4 text-left hover:no-underline">
+                <strong className="text-bean-black pr-4">{faq.question}</strong>
               </AccordionTrigger>
-              <AccordionContent className="px-5 pb-5 pt-0">
+              <AccordionContent className="px-5 pt-0 pb-5">
                 <p className="text-bean-blue-dark">{faq.answer}</p>
               </AccordionContent>
             </AccordionItem>
@@ -87,5 +77,5 @@ export default function FAQ() {
         </Accordion>
       </div>
     </section>
-  );
+  )
 }

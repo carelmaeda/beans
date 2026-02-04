@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import {
   ArrowRight,
   Zap,
@@ -7,56 +7,56 @@ import {
   Target,
   Dumbbell,
   Shield,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const outcomes = [
   {
     icon: <Zap aria-hidden="true" className="h-5 w-5" />,
-    text: "Discipline and professional preparation habits",
+    text: "Pro-level discipline and daily standards",
+    description:
+      "I push you to train, recover, and prepare like a real professional.",
   },
   {
     icon: <Users aria-hidden="true" className="h-5 w-5" />,
-    text: "Leadership presence on and off the court",
+    text: "Leadership that shows when it matters",
+    description:
+      "You learn to lead by actions, not words—on and off the court.",
   },
   {
     icon: <Brain aria-hidden="true" className="h-5 w-5" />,
-    text: "Quick, confident decision-making under pressure",
+    text: "Fast, calm decisions under pressure",
+    description:
+      "I train you to think clearly and choose right when the game speeds up.",
   },
   {
     icon: <Target aria-hidden="true" className="h-5 w-5" />,
-    text: "Advanced volleyball IQ and technical precision",
+    text: "High volleyball IQ and technical precision",
+    description: "You understand the game deeper and execute with intention.",
   },
   {
     icon: <Dumbbell aria-hidden="true" className="h-5 w-5" />,
-    text: "Physical conditioning that matches your ambition",
+    text: "Conditioning built for high performance",
+    description: "Your body keeps up with your ambition and competitive goals.",
   },
   {
     icon: <Shield aria-hidden="true" className="h-5 w-5" />,
-    text: "Mental toughness that wins close games",
+    text: "Mental toughness for tight matches",
+    description:
+      "You stay composed, confident, and aggressive in close moments.",
   },
-];
+]
 
 export default function Outcomes() {
   return (
-    <section className="relative overflow-hidden bg-bean-blue-dark px-6 py-12 md:py-16">
-      {/* Texture */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.10]"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(244,195,58,0.30),transparent_55%),radial-gradient(circle_at_80%_30%,rgba(22,62,170,0.35),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-4xl">
+    <section className="bg-bean-blue-dark/95 relative overflow-hidden px-6 py-12">
+      <div className="mx-auto max-w-4xl">
         <header className="mb-9 text-center">
-          <h2 className="text-white uppercase">
-            What You&apos;ll <span className="text-bean-accent">Develop</span>{" "}
-            With Me
+          <h2 className="text-white">
+            What we will{" "}
+            <span className="text-bean-accent">Develop Together</span>
           </h2>
-          
-          <p className="mx-auto max-w-[52ch] text-white/70">
+          <p className="text-white/70">
             I don&apos;t just teach volleyball. I build complete athletes.
           </p>
         </header>
@@ -68,19 +68,17 @@ export default function Outcomes() {
           {outcomes.map((item, index) => (
             <li
               key={index}
-              className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+              className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 md:p-5"
             >
-              <div className="shrink-0">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-all duration-300 group-hover:border-bean-accent/35 group-hover:bg-bean-accent/20">
-                  {item.icon}
-                </div>
+              <div className="border-bean-accent/25 bg-bean-accent/15 text-bean-accent group-hover:border-bean-accent/35 group-hover:bg-bean-accent/20 grid h-11 w-11 place-items-center rounded-lg border shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-all duration-300">
+                {item.icon}
               </div>
 
-              <div>
+              <div className="space-y-1">
                 <p className="text-white">{item.text}</p>
-                <p className="mt-1 text-white/60">
-                  Built through structure, feedback, and consistent standards.
-                </p>
+                <small className="hidden text-white/50 md:block">
+                  {item.description}
+                </small>
               </div>
             </li>
           ))}
@@ -99,5 +97,5 @@ export default function Outcomes() {
         </div>
       </div>
     </section>
-  );
+  )
 }

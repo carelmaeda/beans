@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-bean-dark">
+    <section className="bg-bean-dark relative w-full overflow-hidden">
       {/* Background */}
       <div
         className="absolute inset-0 z-0"
@@ -33,8 +33,8 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 pt-16">
         <div className="grid items-center gap-10 md:grid-cols-12">
           {/* Image – desktop */}
-          <div className="hidden md:block md:col-span-5">
-            <div className="relative mx-auto w-full max-w-[360px] aspect-[4/5]">
+          <div className="hidden md:col-span-5 md:block">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[360px]">
               <Image
                 src="/images/mami-hero.png"
                 alt="Mami"
@@ -46,20 +46,20 @@ export default function Hero() {
           </div>
 
           {/* Text */}
-          <div className="md:col-span-7 text-center md:text-left">
-            <small className="mb-5 inline-flex w-fit items-center rounded-md  bg-bean-blue/50 px-3 py-1.5 uppercase text-white">
+          <div className="mb-8 text-center md:col-span-7 md:text-left">
+            <small className="bg-bean-blue/50 mb-5 inline-flex w-fit items-center rounded-md px-3 py-1.5 text-white uppercase">
               Elite Volleyball Mentorship
             </small>
 
-            <h1 className="text-center md:text-justify mb-6 uppercase text-white font-black text-4xl md:text-5xl">
-             Train for the 
+            <h1 className="hero-text mb-6 text-center text-white uppercase md:text-start">
+              Reach the
               <br />
-              <span className="text-bean-accent">the Next Level</span>
+              <span className="text-bean-accent"> Next Level</span>
             </h1>
 
             {/* Image – mobile (below title) */}
             <div className="mb-6 md:hidden">
-              <div className="relative mx-auto w-full max-w-[280px] aspect-[4/5]">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px]">
                 <Image
                   src="/images/mami-hero.png"
                   alt="Mami"
@@ -71,9 +71,12 @@ export default function Hero() {
             </div>
 
             <p className="mb-7 max-w-[46ch] text-white/80">
-  I coach serious young athletes who want to be pushed — building discipline, volleyball IQ, and confidence under pressure.            </p>
+              I coach serious young athletes who want to be pushed. <br />{" "}
+              Building discipline, volleyball IQ, and confidence under
+              pressure.{" "}
+            </p>
 
-            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <div className="flex flex-col gap-2 md:items-start">
               <Button asChild variant="default" size="lg">
                 <Link
                   href="#contact"
@@ -91,7 +94,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
     </section>
-  );
+  )
 }
