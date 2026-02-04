@@ -1,100 +1,90 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
-    question: 'What age groups do you coach?',
-    answer: 'I work with athletes of all ages, from young beginners in the Little Seeds program to college and professional players. Each program is tailored to the specific developmental stage and goals of the athlete.',
+    question: "Who is this coaching for?",
+    answer:
+      "I work with serious athletes who want the next level and are ready for high standards. If you're unsure, book a call with me and I'll tell you honestly.",
   },
   {
-    question: 'How does online coaching work?',
-    answer: 'Online coaching includes personalized training programs, video analysis of your gameplay, weekly check-ins, and direct messaging access. I review your videos, provide detailed feedback, and adjust your program based on your progress.',
+    question: "What ages do you work with?",
+    answer:
+      "Usually 12+ through college and pro. Book a call with me and I'll confirm if it's the right fit.",
   },
   {
-    question: 'Do you offer in-person training?',
-    answer: 'Yes! I offer in-person training sessions and clinics. Contact me to discuss availability and location options for private sessions or group training.',
+    question: "How does online coaching work?",
+    answer:
+      "You send video, I analyze it, we meet on a call, and I give you a clear plan to follow. Book a call with me and I'll walk you through it.",
   },
   {
-    question: 'What is the Video Analysis service?',
-    answer: 'I analyze your game footage to identify technical improvements, tactical opportunities, and areas for development. You receive a detailed breakdown with actionable steps to elevate your performance.',
+    question: "How does video analysis work?",
+    answer:
+      "I break your film down frame-by-frame and give you specific fixes and drills. Book a call with me and I'll explain what I look for.",
   },
   {
-    question: 'How long does it take to see results?',
-    answer: "Every athlete is different, but with consistent effort and dedication to the program, most athletes see noticeable improvements within 4-8 weeks. Long-term development is a journey—I'm here to guide you every step.",
+    question: "How soon will I see results?",
+    answer:
+      "If you train consistently, you'll usually feel changes in 4–8 weeks. Book a call with me and I'll map out a realistic timeline.",
   },
   {
-    question: 'What makes your coaching approach unique?',
-    answer: 'I combine professional playing experience with a holistic approach that develops not just your skills, but your mental game, character, and personal brand. I treat every athlete as an individual with unique potential.',
+    question: "Is this too intense for me?",
+    answer:
+      "I push you, but I also support you. I adapt the intensity to your level while keeping the standards high. Book a call with me and we'll decide together.",
+  },
+  {
+    question: "How much does it cost?",
+    answer:
+      "It depends on what you need (analysis, online coaching, or in-person). Book a call with me and I'll recommend the best option for your goals and budget.",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section id="faq" className="py-16 md:py-20 bg-gray-50 px-6">
-      <div className="max-w-5xl mx-auto">
-
-        {/* Section Header */}
-        <div className="mb-10">
-          <span className="inline-block px-3 py-1 bg-bean-accent/20 text-bean-blue rounded-full text-[10px] font-black tracking-widest uppercase mb-3">
-            Questions
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-bean-dark tracking-tighter mb-3 uppercase">
-            FREQUENTLY <span className="text-bean-blue">ASKED</span>
+    <section
+      id="faq"
+      className="relative bg-bean-blue-light px-6 py-12 md:py-16"
+    >
+      <div className="mx-auto max-w-3xl">
+        <header className="mb-9 text-center">
+          <h2 className="uppercase">
+            Common <span className="text-bean-blue">Questions</span>
           </h2>
-          <div className="w-16 h-1.5 bg-bean-accent rounded-full" />
-        </div>
+          <p className="text-bean-blue-dark/70">
+            If you don't see your question here, book a call with me.
+          </p>
+        </header>
 
-        {/* FAQ Grid */}
-        <div className="grid lg:grid-cols-2 gap-3">
+        <Accordion
+          type="single"
+          collapsible
+          className="flex flex-col gap-4 rounded-none border-0 bg-transparent"
+        >
           {faqs.map((faq, index) => (
-            <div
+            <AccordionItem
               key={index}
-              className={`rounded-2xl border-2 transition-all duration-300 overflow-hidden ${
-                openIndex === index
-                  ? 'bg-bean-blue border-bean-blue shadow-lg'
-                  : 'bg-white border-gray-100 hover:border-bean-accent/30'
-              }`}
+              value={`faq-${index}`}
+              className="relative overflow-hidden rounded-2xl border border-bean-blue/15 bg-white shadow-sm transition-all duration-300 hover:border-bean-blue/30 data-[state=open]:border-bean-blue/30 data-[state=open]:shadow-[0_12px_40px_rgba(10,29,77,0.12)]"
             >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full p-5 flex items-center justify-between text-left"
-              >
-                <h3 className={`text-base font-black tracking-tight pr-3 ${
-                  openIndex === index ? 'text-white' : 'text-bean-dark'
-                }`}>
-                  {faq.question}
-                </h3>
-                <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                  openIndex === index
-                    ? 'bg-white/20 rotate-180'
-                    : 'bg-bean-accent/20'
-                }`}>
-                  <ChevronDown className={`w-4 h-4 ${
-                    openIndex === index ? 'text-white' : 'text-bean-blue'
-                  }`} />
-                </div>
-              </button>
-
-              <div className={`overflow-hidden transition-all duration-300 ${
-                openIndex === index ? 'max-h-96' : 'max-h-0'
-              }`}>
-                <p className={`px-5 pb-5 font-medium leading-relaxed text-sm ${
-                  openIndex === index ? 'text-white/80' : 'text-gray-600'
-                }`}>
-                  {faq.answer}
-                </p>
-              </div>
-            </div>
+              <div
+                className="absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-bean-accent opacity-0 transition-opacity duration-300 [[data-state=open]>&]:opacity-100"
+                aria-hidden="true"
+              />
+              <AccordionTrigger className="px-5 py-4 text-left hover:no-underline [&>svg]:text-bean-blue">
+                <h3 className="pr-4 text-bean-black">{faq.question}</h3>
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-5 pt-0">
+                <p className="text-bean-blue-dark">{faq.answer}</p>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );

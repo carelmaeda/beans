@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -11,13 +12,12 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetClose,
-} from '@/components/ui/sheet';
+} from "@/components/ui/sheet";
 
 const navLinks = [
-  { label: 'About', href: '#coach' },
-  { label: 'Services', href: '#services' },
-  { label: 'Roadmap', href: '#roadmap' },
-  { label: 'Values', href: '#values' },
+  { label: "About Me", href: "#coach" },
+  { label: "How I Coach", href: "#services" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -25,101 +25,117 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
+      const doc = document.documentElement;
+      const totalHeight = doc.scrollHeight - window.innerHeight;
+      const progress =
+        totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
       setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-      {/* Scroll Progress Bar */}
-      <div
-        className="absolute top-0 left-0 h-1 bg-[var(--bean-yellow-bright)] transition-all duration-150"
-        style={{ width: `${scrollProgress}%` }}
-      />
+    <header className="sticky top-0 z-50">
+      <nav className="relative border-b border-bean-blue/10 bg-white/90 backdrop-blur-md">
+        <div
+          className="absolute left-0 top-0 h-1 bg-[var(--bean-yellow-bright)]"
+          style={{ width: `${scrollProgress}%` }}
+          aria-hidden="true"
+        />
 
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="flex items-center justify-between h-14">
-          {/* Logo */}
-          <Link href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="h-8 aspect-square flex items-center justify-center">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <defs>
-                  <linearGradient id="beanGradientNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="var(--bean-yellow-bright)" />
-                    <stop offset="100%" stopColor="var(--bean-yellow-primary)" />
-                  </linearGradient>
-                </defs>
-                <ellipse cx="50" cy="50" rx="30" ry="40" fill="url(#beanGradientNav)" transform="rotate(20 50 50)" />
-                <ellipse cx="48" cy="45" rx="8" ry="12" fill="white" opacity="0.3" transform="rotate(20 48 45)" />
-              </svg>
-            </div>
-            <span className="font-bold text-[var(--bean-blue-primary)] text-xl">BEANS</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium text-sm transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button
-              asChild
-              className="bg-[var(--bean-blue-primary)] text-white px-5 py-1.5 rounded-full font-semibold text-sm hover:bg-[var(--bean-blue-dark)] transition-all hover:scale-105"
+        <div className="mx-auto max-w-5xl">
+          <div className="flex h-14 items-center justify-between">
+            {/* Logo */}
+            <Link
+              href="#top"
+              className="inline-flex items-center transition-opacity hover:opacity-90"
+              aria-label="Go to top"
             >
-              <Link href="#contact">Apply</Link>
-            </Button>
-          </div>
+              <Image
+                src="/logos/beans-logo-black.png"
+                alt="Beans Volleyball"
+                width={120}
+                height={40}
+                priority
+                className="h-12 w-auto"
+              />
+            </Link>
 
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden text-gray-700 hover:text-[var(--bean-blue-primary)]"
-                aria-label="Open menu"
-              >
-                <Menu className="w-6 h-6" />
+            {/* Desktop Navigation */}
+            <div className="hidden items-center gap-6 md:flex">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-bean-blue-dark transition-colors hover:text-bean-blue"
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              <Button asChild variant="default">
+                <Link href="#contact">Book a Call</Link>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-              <SheetHeader>
-                <SheetTitle className="text-left text-[var(--bean-blue-primary)]">Menu</SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col gap-4 mt-6">
-                {navLinks.map((link) => (
-                  <SheetClose asChild key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-700 hover:text-[var(--bean-blue-primary)] font-medium transition-colors py-2 text-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-                <SheetClose asChild>
-                  <Button
-                    asChild
-                    className="bg-[var(--bean-blue-primary)] text-white px-6 py-3 rounded-full font-semibold text-center hover:bg-[var(--bean-blue-dark)] transition-all mt-4"
-                  >
-                    <Link href="#contact">Apply</Link>
-                  </Button>
-                </SheetClose>
-              </div>
-            </SheetContent>
-          </Sheet>
+            </div>
+
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-2xl text-bean-blue-dark hover:bg-bean-blue-light hover:text-bean-blue md:hidden"
+                  aria-label="Open menu"
+                >
+                  <Menu aria-hidden="true" className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent
+                side="right"
+                className="w-[300px] border-l border-bean-blue/10 sm:w-[340px]"
+              >
+                <SheetHeader>
+                  <SheetTitle className="text-left uppercase text-bean-blue">
+                    Menu
+                  </SheetTitle>
+                </SheetHeader>
+
+                <nav
+                  className="mt-6 flex flex-col gap-2"
+                  aria-label="Mobile navigation"
+                >
+                  {navLinks.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="rounded-2xl px-4 py-3 text-bean-blue-dark transition-colors hover:bg-bean-blue-light hover:text-bean-blue"
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+
+                  <div className="mt-4">
+                    <SheetClose asChild>
+                      <Button asChild variant="default" className="w-full">
+                        <Link href="#contact">Book a Call</Link>
+                      </Button>
+                    </SheetClose>
+
+                    <p className="mt-3 text-center text-bean-blue-dark/70">
+                      Free · 20 minutes · No obligation
+                    </p>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use "./variables" as *;
 @import "tailwindcss";
 
 // ==========================================================================
@@ -59,12 +59,20 @@ section[id] {
 
 // Gradient backgrounds
 .bg-bean-gradient {
-  background: linear-gradient(135deg, var(--bean-blue-primary) 0%, var(--bean-blue-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bean-blue-primary) 0%,
+    var(--bean-blue-dark) 100%
+  );
 }
 
 // Text gradients
 .text-bean-gradient {
-  background: linear-gradient(135deg, var(--bean-blue-primary) 0%, var(--bean-yellow-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bean-blue-primary) 0%,
+    var(--bean-yellow-primary) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -78,4 +86,3 @@ section[id] {
 .transition-bean-pop {
   transition: var(--transition-pop);
 }
-

@@ -1,78 +1,141 @@
-"use client";
-import { useState } from 'react';
-import { Monitor, Video, MapPin, ArrowRight } from 'lucide-react';
-import DetailsModal from './modal/DetailsModal';
+import Link from "next/link";
+import { Monitor, Video, MapPin, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const services = [
   {
     title: "Online Coaching",
-    icon: <Monitor className="w-8 h-8" />,
-    desc: "Train with me from anywhere in the world.",
-    detail: "Weekly video calls where I break down your game and build your path forward.",
-    price: "120",
-    features: ["Weekly 1-on-1 Calls", "Custom Roadmap", "Career Planning", "Mental Edge"],
-    outcome: "Build the mindset and IQ to dominate at the next level."
+    icon: <Monitor aria-hidden="true" className="h-6 w-6" />,
+    outcome: "Build pro-level game IQ and mental toughness from anywhere.",
+    detail:
+      "Weekly video calls, custom roadmap, career planning, and direct feedback on your development.",
+    price: 120,
+    priceNote: "Final plan depends on your goals",
   },
   {
-    title: "Video Lab",
-    icon: <Video className="w-8 h-8" />,
-    desc: "I dissect your technique frame-by-frame.",
-    detail: "Send me your footage. I find the flaws killing your power and show you how to fix them.",
-    price: "85",
-    features: ["Frame Analysis", "Pro Comparison", "Voice Report", "Drill Prescriptions"],
-    outcome: "Unlock hidden power by fixing technical blind spots."
+    title: "Video Analysis",
+    icon: <Video aria-hidden="true" className="h-6 w-6" />,
+    outcome: "Fix the technical flaws you can't see yourself.",
+    detail:
+      "I break down your footage frame-by-frame and give you specific drills to improve.",
+    price: 85,
+    priceNote: "Per session",
   },
   {
     title: "In-Person Training",
-    icon: <MapPin className="w-8 h-8" />,
-    desc: "Hands-on sessions. Real courts. Real intensity.",
-    detail: "I work with you directly—technical drills, conditioning, game pressure.",
-    price: "150",
-    features: ["Technical Drills", "Position Work", "Live Feedback", "Facility Access"],
-    outcome: "Feel what pro training demands. Grow faster with instant corrections."
-  }
+    icon: <MapPin aria-hidden="true" className="h-6 w-6" />,
+    outcome: "Experience what pro training intensity feels like.",
+    detail:
+      "Hands-on technical drills, real-time corrections, and physical conditioning.",
+    price: 150,
+    priceNote: "Availability varies by location",
+  },
 ];
 
 export default function Services() {
-  const [activeService, setActiveService] = useState<typeof services[0] | null>(null);
-
   return (
-    <section id="services" className="py-16 md:py-20 bg-white px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-bean-dark tracking-tighter mb-3 uppercase">
-            HOW I <span className="text-bean-blue">COACH</span>
-          </h2>
-          <div className="w-20 h-2 bg-bean-accent rounded-full" />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {services.map((s) => (
-            <button
-              key={s.title}
-              onClick={() => setActiveService(s)}
-              className="p-6 rounded-2xl border-2 border-gray-100 bg-gray-50/50 hover:bg-white hover:border-bean-accent transition-all duration-300 text-left group cursor-pointer"
-            >
-              <div className="p-3 bg-white rounded-xl shadow-sm text-bean-blue mb-4 w-fit">{s.icon}</div>
-              <h3 className="text-xl font-black text-bean-dark mb-2 uppercase">{s.title}</h3>
-              <p className="text-gray-600 font-medium mb-4 leading-relaxed text-sm">{s.desc}</p>
-              <span className="flex items-center gap-2 font-bold text-sm text-bean-blue">
-                LEARN MORE <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
-          ))}
-        </div>
+    <section
+      id="services"
+      className="relative overflow-hidden bg-bean-blue-light/60 px-6 py-12 md:py-16"
+    >
+      {/* Texture */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
-      <DetailsModal
-        isOpen={!!activeService}
-        onClose={() => setActiveService(null)}
-        title={activeService?.title || ""}
-        content={activeService?.detail || ""}
-        price={activeService?.price}
-        features={activeService?.features}
-        outcome={activeService?.outcome}
-      />
+      <div className="relative mx-auto max-w-5xl">
+        <header className="mb-9">
+          <h2 className="uppercase text-bean-black">
+            How I <span className="text-bean-blue">Coach</span>
+          </h2>
+          <p className="max-w-[60ch] text-bean-blue-dark/70">
+            Three ways to train with me, based on your needs.
+          </p>
+        </header>
+
+        <ul
+          className="mb-10 grid grid-cols-1 gap-5 md:grid-cols-3"
+          aria-label="Coaching services"
+        >
+          {services.map((s) => (
+            <li key={s.title} className="h-full">
+              <Card className="group relative h-full rounded-3xl border-bean-blue/10 bg-white ring-bean-blue/10 shadow-[0_10px_40px_rgba(10,29,77,0.08)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_60px_rgba(10,29,77,0.14)]">
+                <div
+                  className="absolute inset-x-0 top-0 h-[3px] rounded-t-3xl bg-gradient-to-r from-bean-blue-primary via-bean-blue-primary to-bean-yellow-primary opacity-70"
+                  aria-hidden="true"
+                />
+
+                <CardHeader className="pb-0">
+                  <div className="mb-4">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl border border-bean-blue/15 bg-bean-blue/10 text-bean-blue shadow-sm transition-all duration-300 group-hover:bg-bean-blue/12">
+                      {s.icon}
+                    </div>
+                  </div>
+                  <CardTitle className="uppercase text-bean-black">
+                    {s.title}
+                  </CardTitle>
+                  <CardDescription className="text-bean-blue-dark">
+                    {s.outcome}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent>
+                  <p className="text-bean-blue-dark/70">{s.detail}</p>
+                </CardContent>
+
+                <CardFooter className="mt-auto flex-col items-stretch gap-0">
+                  <Separator className="mb-5 bg-bean-blue/10" />
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <small className="uppercase tracking-[0.18em] text-bean-blue-dark/45">
+                        Starting at
+                      </small>
+                      <p className="text-bean-black">
+                        <span
+                          aria-label={`Starting at ${s.price} Canadian dollars`}
+                        >
+                          ${s.price}
+                        </span>{" "}
+                        <small className="uppercase text-bean-blue-dark/45">
+                          CAD
+                        </small>
+                      </p>
+                    </div>
+
+                    <p className="max-w-[18ch] text-right text-bean-blue-dark/55">
+                      {s.priceNote}
+                    </p>
+                  </div>
+                </CardFooter>
+              </Card>
+            </li>
+          ))}
+        </ul>
+
+        <div className="text-center">
+          <Button asChild variant="default">
+            <Link href="#contact" className="inline-flex items-center gap-2">
+              Book a Call <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
+          </Button>
+
+          <p className="mt-3 text-bean-blue-dark/60">
+            I&apos;ll recommend the best option after we talk.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

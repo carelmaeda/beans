@@ -1,35 +1,35 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import '../styles/globals.scss';
-import { siteConfig } from '@/data/siteConfig';
-import { SITE_NAME, CONTACT_EMAIL } from '@/lib/constants';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../styles/globals.scss";
+import { siteConfig } from "@/data/siteConfig";
+import { SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
 const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-inter',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'BEANS Volleyball | Coach Mami - Seed to Pro',
+    default: "BEANS Volleyball | Coach Mami - Seed to Pro",
     template: `%s | ${SITE_NAME}`,
   },
   description: siteConfig.description,
   keywords: [
-    'volleyball coaching',
-    'volleyball mentorship',
-    'online volleyball training',
-    'video analysis',
-    'volleyball skills',
-    'personalized coaching',
-    'volleyball lessons',
-    'Canada volleyball',
-    'youth volleyball',
-    'professional volleyball coach',
-    'Coach Mami',
-    'JVA volleyball',
+    "volleyball coaching",
+    "volleyball mentorship",
+    "online volleyball training",
+    "video analysis",
+    "volleyball skills",
+    "personalized coaching",
+    "volleyball lessons",
+    "Canada volleyball",
+    "youth volleyball",
+    "professional volleyball coach",
+    "Coach Mami",
+    "JVA volleyball",
   ],
   authors: [{ name: `${SITE_NAME}` }],
   creator: SITE_NAME,
@@ -40,11 +40,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_CA',
+    type: "website",
+    locale: "en_CA",
     url: siteConfig.url,
     siteName: SITE_NAME,
-    title: 'BEANS Volleyball | Coach Mami - Seed to Pro',
+    title: "BEANS Volleyball | Coach Mami - Seed to Pro",
     description: siteConfig.description,
     images: [
       {
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'BEANS Volleyball | Coach Mami - Seed to Pro',
+    card: "summary_large_image",
+    title: "BEANS Volleyball | Coach Mami - Seed to Pro",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
@@ -67,15 +67,15 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -85,23 +85,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': siteConfig.url,
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": siteConfig.url,
     name: SITE_NAME,
     description: siteConfig.description,
     url: siteConfig.url,
     email: CONTACT_EMAIL,
     address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'CA',
+      "@type": "PostalAddress",
+      addressCountry: "CA",
     },
     sameAs: [
-      siteConfig.links.instagram || '',
-      siteConfig.links.youtube || '',
-      siteConfig.links.facebook || '',
+      siteConfig.links.instagram || "",
+      siteConfig.links.youtube || "",
+      siteConfig.links.facebook || "",
     ].filter(Boolean),
-    priceRange: '$100-$500',
+    priceRange: "$100-$500",
     image: siteConfig.ogImage,
   };
 
@@ -115,7 +115,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body
+        className={`${inter.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

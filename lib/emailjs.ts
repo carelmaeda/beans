@@ -1,11 +1,13 @@
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 if (!serviceId || !templateId || !publicKey) {
-  console.warn('EmailJS credentials not configured. Please add environment variables.');
+  console.warn(
+    "EmailJS credentials not configured. Please add environment variables.",
+  );
 }
 
 export interface ContactFormData {
@@ -19,7 +21,7 @@ export interface ContactFormData {
 export const sendContactEmail = async (data: ContactFormData) => {
   if (!serviceId || !templateId || !publicKey) {
     throw new Error(
-      'EmailJS not configured. Please add NEXT_PUBLIC_EMAILJS_* environment variables.'
+      "EmailJS not configured. Please add NEXT_PUBLIC_EMAILJS_* environment variables.",
     );
   }
 
@@ -28,11 +30,11 @@ export const sendContactEmail = async (data: ContactFormData) => {
       serviceId,
       templateId,
       data as unknown as Record<string, unknown>,
-      publicKey
+      publicKey,
     );
     return response;
   } catch (error) {
-    console.error('EmailJS error:', error);
+    console.error("EmailJS error:", error);
     throw error;
   }
 };

@@ -4,27 +4,27 @@
 // ==========================================================================
 
 // --- Core Brand Colors ---
-$bean-blue-primary:   #163EAA; // The dominant royal blue from the ball
-$bean-yellow-primary: #F4C33A; // The vibrant golden-yellow
-$bean-white:          #FFFFFF; // Pure white for high-contrast areas
-$bean-black:          #1A1A1A; // Carbon black for pro-level typography
+$bean-blue-primary: #163eaa; // The dominant royal blue from the ball
+$bean-yellow-primary: #f4c33a; // The vibrant golden-yellow
+$bean-white: #ffffff; // Pure white for high-contrast areas
+$bean-black: #1a1a1a; // Carbon black for pro-level typography
 
 // --- Derived Functional Tones ---
-$bean-blue-dark:      #0A1D4D; // For footers and heavy text
-$bean-blue-light:     #E8EEFF; // For subtle section backgrounds
-$bean-yellow-bright:  #FFD700; // High-visibility "Pop" for CTA buttons
-$bean-gray-light:     #F2F2F2; // Off-white for a modern, soft feel
+$bean-blue-dark: #0a1d4d; // For footers and heavy text
+$bean-blue-light: #e8eeff; // For subtle section backgrounds
+$bean-yellow-bright: #ffd700; // High-visibility "Pop" for CTA buttons
+$bean-gray-light: #f2f2f2; // Off-white for a modern, soft feel
 
 // --- UI Element Mappings ---
-$primary-action:      $bean-yellow-bright;
-$primary-surface:     $bean-white;
-$text-main:           $bean-black;
-$text-muted:          $bean-blue-dark;
-$border-color:        rgba($bean-blue-primary, 0.1);
+$primary-action: $bean-yellow-bright;
+$primary-surface: $bean-white;
+$text-main: $bean-black;
+$text-muted: $bean-blue-dark;
+$border-color: rgba($bean-blue-primary, 0.1);
 
 // --- Transition Settings ---
 $bean-transition-fast: 200ms ease-in-out;
-$bean-transition-pop:  300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); // "Sprouting" effect
+$bean-transition-pop: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); // "Sprouting" effect
 
 // --- Spacing ---
 $spacing-xs: 0.25rem;

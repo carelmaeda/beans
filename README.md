@@ -7,6 +7,7 @@ A professional, modern volleyball coaching website built with Next.js 14, React 
 ## 🎯 Overview
 
 Complete 5-page website for Beans Volleyball Coaching featuring:
+
 - ✅ Responsive design (mobile, tablet, desktop)
 - ✅ Modern purple gradient & coral color scheme
 - ✅ SEO optimized with metadata and structured data
@@ -52,17 +53,20 @@ npm run start
 ## 🎨 Design System
 
 **Colors:**
+
 - Primary Purple: `#667eea` → `#764ba2`
 - Accent Coral: `#FF6B6B`
 - Accent Yellow: `#FFE66D`
 - Grays: `#2d3748`, `#4a5568`, `#718096`
 
 **Typography:**
+
 - Font: Geist Sans
 - Headings: 800 weight
 - Body: 16-18px, 400 weight
 
 **Components:**
+
 - Border radius: 8px (buttons), 16px (cards)
 - Transitions: 0.3s ease
 - Hover effects: translateY(-4px)
@@ -121,12 +125,14 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
 ### Content Updates
 
 **Text:**
+
 - Services: `data/services.ts`
 - Testimonials: `data/testimonials.ts`
 - FAQ: `data/faq.ts`
 - Pricing: `data/pricing.ts`
 
 **Images:**
+
 - Replace files in `public/images/`
   - `hero/` - Hero images
   - `services/` - Service images
@@ -134,6 +140,7 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
   - `logo/` - Logo files
 
 **Configuration:**
+
 - Calendly URL: `lib/constants.ts`
 - Social links: `lib/constants.ts`
 - Contact email: `lib/constants.ts`

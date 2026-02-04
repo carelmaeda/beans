@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next';
-import { siteConfig } from '@/data/siteConfig';
+import { MetadataRoute } from "next";
+import { siteConfig } from "@/data/siteConfig";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1.0,
     },
   ];

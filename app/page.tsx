@@ -1,12 +1,12 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import CoachMami from '@/components/CoachMami';
-import Services from '@/components/Services';
-import Roadmap from '@/components/Roadmap';
-import Values from '@/components/Values';
-import FAQ from '@/components/FAQ';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Outcomes from "@/components/Outcomes";
+import Services from "@/components/Services";
+import CoachMami from "@/components/CoachMami";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -14,10 +14,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <CoachMami />
+        <Outcomes />
         <Services />
-        <Roadmap />
-        <Values />
+        <CoachMami />
+        <Testimonials />
         <FAQ />
         <Contact />
       </main>

@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Merge Tailwind CSS classes with clsx and tailwind-merge
@@ -13,9 +13,9 @@ export function cn(...inputs: ClassValue[]) {
  * Format currency to CAD
  */
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD',
+  return new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);
@@ -25,7 +25,7 @@ export function formatCurrency(amount: number): string {
  * Format phone number
  */
 export function formatPhoneNumber(phone: string): string {
-  const cleaned = phone.replace(/\D/g, '');
+  const cleaned = phone.replace(/\D/g, "");
   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
     return `(${match[1]}) ${match[2]}-${match[3]}`;
@@ -38,7 +38,7 @@ export function formatPhoneNumber(phone: string): string {
  */
 export function truncate(str: string, length: number): string {
   if (str.length <= length) return str;
-  return str.slice(0, length) + '...';
+  return str.slice(0, length) + "...";
 }
 
 /**
@@ -54,7 +54,7 @@ export function smoothScrollToSection(sectionId: string): void {
 
     window.scrollTo({
       top: offsetPosition,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
 }
@@ -63,7 +63,7 @@ export function smoothScrollToSection(sectionId: string): void {
  * Get the currently active section based on scroll position
  */
 export function getCurrentSection(): string {
-  const sections = ['about', 'services', 'how-it-works', 'contact'];
+  const sections = ["about", "services", "how-it-works", "contact"];
 
   for (const section of sections) {
     const element = document.getElementById(section);
@@ -76,5 +76,5 @@ export function getCurrentSection(): string {
     }
   }
 
-  return ''; // Default to no active section (at top)
+  return ""; // Default to no active section (at top)
 }
