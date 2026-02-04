@@ -36,7 +36,7 @@ export default function Hero() {
           <div className="hidden md:block md:col-span-5">
             <div className="relative mx-auto w-full max-w-[360px] aspect-[4/5]">
               <Image
-                src="/images/mami2.png"
+                src="/images/mami-hero.png"
                 alt="Mami"
                 fill
                 priority
