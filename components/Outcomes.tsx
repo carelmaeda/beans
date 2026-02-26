@@ -9,6 +9,7 @@ import {
   Shield,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 const outcomes = [
   {
@@ -50,7 +51,7 @@ const outcomes = [
 export default function Outcomes() {
   return (
     <section className="bg-bean-blue-dark/95 relative overflow-hidden px-6 py-12">
-      <div className="mx-auto max-w-4xl">
+      <div className="section-container">
         <header className="mb-9 text-center">
           <h2 className="text-white">
             What we will{" "}
@@ -66,20 +67,22 @@ export default function Outcomes() {
           aria-label="Outcomes you will develop"
         >
           {outcomes.map((item, index) => (
-            <li
-              key={index}
-              className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 md:p-5"
-            >
-              <div className="border-bean-accent/25 bg-bean-accent/15 text-bean-accent group-hover:border-bean-accent/35 group-hover:bg-bean-accent/20 grid h-11 w-11 place-items-center rounded-lg border shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-all duration-300">
-                {item.icon}
-              </div>
+            <li key={index}>
+              <Card
+                size="sm"
+                className="h-full flex-row bg-white/5 text-white ring-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+              >
+                <CardContent className="flex items-center gap-4">
+                  <div className="group-hover:border-bean-accent/35 group-hover:bg-bean-accent/20 grid h-11 w-11 place-items-center rounded-lg bg-white/15">
+                    {item.icon}
+                  </div>
 
-              <div className="space-y-1">
-                <p className="text-white">{item.text}</p>
-                <small className="hidden text-white/50 md:block">
-                  {item.description}
-                </small>
-              </div>
+                  <div className="grid">
+                    <strong>{item.text}</strong>
+                    <div className="font-thin">{item.description}</div>
+                  </div>
+                </CardContent>
+              </Card>
             </li>
           ))}
         </ul>

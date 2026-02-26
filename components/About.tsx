@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 import {
   ArrowRight,
   ShieldCheck,
@@ -9,17 +9,22 @@ import {
   BadgeCheck,
   HeartHandshake,
   Users,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/carousel"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 
 const coachImages = [
   {
@@ -34,19 +39,19 @@ const coachImages = [
     src: "/images/mami3.jpg",
     alt: "Mami Miyashita during training session",
   },
-    {
+  {
     src: "/images/mami5.jpg",
     alt: "Mami Miyashita during training session",
   },
-    {
+  {
     src: "/images/mami6.jpg",
     alt: "Mami Miyashita during training session",
   },
-    {
+  {
     src: "/images/mami7.jpg",
     alt: "Mami Miyashita during training session",
   },
-];
+]
 
 const values = [
   {
@@ -69,25 +74,30 @@ const values = [
     body: "Character grows with your game.",
     icon: <HeartHandshake aria-hidden="true" className="h-5 w-5" />,
   },
-];
+  {
+    title: "Community",
+    body: "We grow together through the sport.",
+    icon: <Users aria-hidden="true" className="h-5 w-5" />,
+  },
+]
 
-export default function CoachMami() {
+export default function About() {
   return (
     <section
       id="coach"
-      className="relative overflow-hidden bg-bean-blue-light px-6 py-12 md:py-16"
+      className="bg-bean-blue-light relative overflow-hidden px-6 py-12 md:py-16"
     >
       {/* Texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="texture-grid opacity-[0.06]"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:72px_72px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="section-container relative">
         <header className="mb-9">
-          <h2 className="uppercase text-bean-black">
+          <h2 className="text-bean-black uppercase">
             About <span className="text-bean-blue">Me</span>
           </h2>
         </header>
@@ -115,14 +125,16 @@ export default function CoachMami() {
                         />
 
                         <div
-                          className="absolute inset-0 bg-gradient-to-t from-bean-blue-dark/80 via-transparent to-transparent"
+                          className="from-bean-blue-dark/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent"
                           aria-hidden="true"
                         />
 
-                        <figcaption className="absolute bottom-4 left-4 right-4">
+                        <figcaption className="absolute right-4 bottom-4 left-4">
                           <div className="inline-flex flex-col rounded-2xl bg-black/40 px-4 py-3 backdrop-blur-md">
-                            <p className="text-white uppercase">Mami Miyashita</p>
-                            <small className=" text-bean-accent uppercase tracking-[0.18em]">
+                            <p className="text-white uppercase">
+                              Mami Miyashita
+                            </p>
+                            <small className="text-bean-accent tracking-[0.18em] uppercase">
                               宮下マミ
                             </small>
                           </div>
@@ -134,7 +146,6 @@ export default function CoachMami() {
                 <CarouselPrevious className="left-2 border-0 bg-white/80 hover:bg-white" />
                 <CarouselNext className="right-2 border-0 bg-white/80 hover:bg-white" />
               </Carousel>
-
             </figure>
           </div>
 
@@ -155,51 +166,34 @@ export default function CoachMami() {
               </p>
             </div>
 
-            <div className="mt-7 pt-5">
-              <Separator className="mb-5 bg-bean-blue/20" />
-              <h3 className="uppercase text-bean-blue-dark">
+            <div className="pt-5">
+              <Separator className="bg-bean-blue/20 mb-5" />
+              <h3 className="text-bean-blue-dark uppercase">
                 What I Stand For
               </h3>
 
               <ul
-                className="mt-4 grid gap-4 sm:grid-cols-2"
+                className="mt-4 grid gap-2 sm:grid-cols-3"
                 aria-label="Core values"
               >
                 {values.map((v) => (
                   <li key={v.title}>
-                    <Card className="h-full rounded-2xl border-bean-blue/15 bg-white ring-bean-blue/15 shadow-[0_10px_30px_rgba(10,29,77,0.08)]">
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-bean-blue/20 bg-bean-blue-light text-bean-blue">
-                            {v.icon}
-                          </div>
-                          <div>
-                            <p className="uppercase text-bean-black">{v.title}</p>
-                            <p className="mt-1 text-bean-blue-dark">{v.body}</p>
-                          </div>
-                        </div>
-                      </CardContent>
+                    <Card
+                      size="sm"
+                      className="border-bean-blue/15 ring-bean-blue/15 rounded-xl bg-white py-3"
+                    >
+                      <CardHeader>
+                        <div className="text-bean-blue h-8 w-8">{v.icon}</div>
+                        <CardTitle className="text-bean-black">
+                          {v.title}
+                        </CardTitle>
+                        <CardDescription className="text-bean-blue-dark">
+                          {v.body}
+                        </CardDescription>
+                      </CardHeader>
                     </Card>
                   </li>
                 ))}
-
-                <li className="sm:col-span-2">
-                  <Card className="h-full rounded-2xl border-bean-blue/15 bg-white ring-bean-blue/15 shadow-[0_10px_30px_rgba(10,29,77,0.08)]">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-bean-blue/20 bg-bean-blue-light text-bean-blue">
-                          <Users aria-hidden="true" className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <p className="uppercase text-bean-black">Community</p>
-                          <p className="mt-1 text-bean-blue-dark">
-                            We grow together through the sport.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </li>
               </ul>
             </div>
 
@@ -218,5 +212,5 @@ export default function CoachMami() {
         </div>
       </div>
     </section>
-  );
+  )
 }

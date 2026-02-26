@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Hero() {
   return (
-    <section className="bg-bean-dark relative w-full overflow-hidden">
+    <section className="bg-bean-dark relative">
       {/* Background */}
       <div
         className="absolute inset-0 z-0"
@@ -22,36 +22,33 @@ export default function Hero() {
       />
 
       {/* Texture */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.08]"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:52px_52px]" />
+      <div className="texture-grid z-[1] opacity-[0.08]" aria-hidden="true">
+        <div className="bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:52px_52px]" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-16">
-        <div className="grid items-center gap-10 md:grid-cols-12">
-          {/* Image – desktop */}
-          <div className="hidden md:col-span-5 md:block">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-[360px]">
+      <div className="section-container relative z-10 px-6 pt-16">
+        <div className="grid items-end gap-6 md:grid-cols-12 lg:gap-8">
+          {/* Left image – desktop */}
+          <div className="hidden md:col-span-3 md:block">
+            <div className="relative mx-auto h-[400px]">
               <Image
-                src="/images/mami-hero.png"
-                alt="Mami"
+                src="/images/mami-hero4-crop.png"
+                alt="Mami coaching"
                 fill
                 priority
-                className="object-contain"
+                className="object-contain object-bottom"
               />
             </div>
           </div>
 
-          {/* Text */}
-          <div className="mb-8 text-center md:col-span-7 md:text-left">
-            <small className="bg-bean-blue/50 mb-5 inline-flex w-fit items-center rounded-md px-3 py-1.5 text-white uppercase">
+          {/* Center text */}
+          <div className="mb-8 text-center md:col-span-6">
+            <small className="bg-bean-blue/50 mb-5 inline-flex items-center rounded-md px-3 py-1.5 text-white uppercase">
               Elite Volleyball Mentorship
             </small>
 
-            <h1 className="hero-text mb-6 text-center text-white uppercase md:text-start">
+            <h1 className="hero-text mb-6 text-white uppercase">
               Reach the
               <br />
               <span className="text-bean-accent"> Next Level</span>
@@ -61,7 +58,7 @@ export default function Hero() {
             <div className="mb-6 md:hidden">
               <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px]">
                 <Image
-                  src="/images/mami-hero.png"
+                  src="/images/mami-hero2.png"
                   alt="Mami"
                   fill
                   priority
@@ -70,13 +67,13 @@ export default function Hero() {
               </div>
             </div>
 
-            <p className="mb-7 max-w-[46ch] text-white/80">
+            <p className="mx-auto mb-7 max-w-[46ch] text-white/80">
               I coach serious young athletes who want to be pushed. <br />{" "}
               Building discipline, volleyball IQ, and confidence under
               pressure.{" "}
             </p>
 
-            <div className="flex flex-col gap-2 md:items-start">
+            <div className="flex flex-col items-center gap-2">
               <Button asChild variant="default" size="lg">
                 <Link
                   href="#contact"
@@ -90,6 +87,19 @@ export default function Hero() {
               <small className="text-white/60">
                 Free · 20 minutes · No obligation
               </small>
+            </div>
+          </div>
+
+          {/* Right image – desktop */}
+          <div className="hidden md:col-span-3 md:block">
+            <div className="relative mx-auto h-[380px] w-full">
+              <Image
+                src="/images/mami-hero2-crop.png"
+                alt="Mami in action"
+                fill
+                priority
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

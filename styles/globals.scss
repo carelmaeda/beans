@@ -119,6 +119,79 @@ small,
 }
 
 // ==========================================================================
+// Layout
+// ==========================================================================
+
+.section-container {
+  @apply mx-auto;
+
+  @media (min-width: 768px) {
+    max-width: 960px;
+  }
+}
+
+// ==========================================================================
+// Reusable Patterns (extracted from repeated Tailwind chains)
+// ==========================================================================
+
+// Card with hover-lift effect — used in Services, Testimonials
+// Replaces 13+ utility chains with a single class
+.card-hover-lift {
+  @apply rounded-xl bg-white transition-all duration-300;
+  box-shadow: 0 10px 40px rgba(10, 29, 77, 0.08);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 60px rgba(10, 29, 77, 0.14);
+  }
+}
+
+// Top accent gradient bar — used on Cards in Services, Testimonials
+.card-accent-bar {
+  @apply absolute inset-x-0 top-0 h-[3px] rounded-t-3xl opacity-70;
+  background: linear-gradient(
+    to right,
+    var(--bean-blue-primary),
+    var(--bean-blue-primary),
+    var(--bean-yellow-primary)
+  );
+}
+
+// Social icon button — used in Footer, Contact
+.social-icon-btn {
+  @apply flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all;
+
+  &:hover {
+    @apply border-bean-accent bg-bean-accent text-bean-dark;
+  }
+}
+
+// Step number badge — used in Contact "What to Expect"
+.step-badge {
+  @apply mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent;
+}
+
+// Dark-section glass panel — used in Contact left/right panels
+.glass-panel {
+  @apply rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+}
+
+// Form input on dark bg — used in Contact inputs
+.input-dark-bg {
+  @apply h-11 rounded-2xl border border-transparent bg-white text-bean-black placeholder:text-gray-400 focus-visible:border-bean-accent focus-visible:ring-0;
+}
+
+// Grid texture overlay — used in Hero, Services, About, Testimonials, Contact
+.texture-grid {
+  @apply pointer-events-none absolute inset-0;
+
+  > div {
+    @apply absolute inset-0;
+  }
+}
+
+// ==========================================================================
 // Utility Classes
 // ==========================================================================
 

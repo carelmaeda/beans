@@ -81,14 +81,14 @@ export default function Contact() {
     >
       {/* background accents */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        className="texture-grid opacity-[0.12]"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(244,195,58,0.35),transparent_55%),radial-gradient(circle_at_75%_30%,rgba(22,62,170,0.45),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="bg-[radial-gradient(circle_at_25%_20%,rgba(244,195,58,0.35),transparent_55%),radial-gradient(circle_at_75%_30%,rgba(22,62,170,0.45),transparent_60%)]" />
+        <div className="bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="section-container relative">
         <header className="mb-10 text-center">
           <h2 className="uppercase text-white">
             Ready to <span className="text-bean-accent">Start?</span>
@@ -101,24 +101,24 @@ export default function Contact() {
 
         <div className="grid items-stretch gap-6 lg:grid-cols-12">
           {/* Left */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.25)] backdrop-blur-md lg:col-span-5">
+          <div className="glass-panel lg:col-span-5">
             <h3 className="uppercase text-white">What to Expect</h3>
 
             <ol className="mt-4 space-y-3 text-white/80">
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent">
+                <span className="step-badge">
                   1
                 </span>
                 <span>We discuss your current level and goals</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent">
+                <span className="step-badge">
                   2
                 </span>
                 <span>I explain how my coaching works</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent">
+                <span className="step-badge">
                   3
                 </span>
                 <span>You decide if it&apos;s the right fit</span>
@@ -151,7 +151,7 @@ export default function Contact() {
                 <a
                   key={name}
                   href={href}
-                  className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all hover:border-bean-accent hover:bg-bean-accent hover:text-bean-dark"
+                  className="social-icon-btn"
                   aria-label={name}
                 >
                   <Icon aria-hidden="true" size={16} />
@@ -161,7 +161,7 @@ export default function Contact() {
           </div>
 
           {/* Right */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.25)] backdrop-blur-md lg:col-span-7">
+          <div className="glass-panel lg:col-span-7">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="space-y-5"
@@ -183,7 +183,7 @@ export default function Contact() {
                     aria-describedby={
                       errors.from_name ? "from_name_error" : undefined
                     }
-                    className="h-11 rounded-2xl border border-transparent bg-white text-bean-black placeholder:text-gray-400 focus-visible:border-bean-accent focus-visible:ring-0"
+                    className="input-dark-bg"
                   />
                   {errors.from_name && (
                     <p
@@ -214,7 +214,7 @@ export default function Contact() {
                     aria-describedby={
                       errors.from_email ? "from_email_error" : undefined
                     }
-                    className="h-11 rounded-2xl border border-transparent bg-white text-bean-black placeholder:text-gray-400 focus-visible:border-bean-accent focus-visible:ring-0"
+                    className="input-dark-bg"
                   />
                   {errors.from_email && (
                     <p
@@ -237,7 +237,7 @@ export default function Contact() {
                   id="goals"
                   {...register("goals")}
                   placeholder="Your goals, current level, questions..."
-                  className="min-h-[96px] resize-none rounded-2xl border border-transparent bg-white p-3 text-bean-black placeholder:text-gray-400 focus-visible:border-bean-accent focus-visible:ring-0"
+                  className="input-dark-bg min-h-[96px] resize-none p-3"
                 />
               </div>
 

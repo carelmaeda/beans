@@ -41,7 +41,7 @@ export default function FAQ() {
       id="faq"
       className="bg-bean-blue-light relative px-6 py-12 md:py-16"
     >
-      <div className="mx-auto max-w-3xl">
+      <div className="section-container">
         <header className="mb-9 text-center">
           <h2 className="uppercase">
             Common <span className="text-bean-blue">Questions</span>
@@ -51,11 +51,7 @@ export default function FAQ() {
           </p>
         </header>
 
-        <Accordion
-          type="single"
-          collapsible
-          className="flex flex-col gap-4 rounded-none border-0 bg-transparent"
-        >
+        <Accordion type="single" collapsible className="flex flex-col gap-4">
           {faqs.map((faq, index) => (
             <AccordionItem
               key={index}

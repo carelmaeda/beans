@@ -1,23 +1,23 @@
-import Link from "next/link";
-import { Instagram, Youtube, Facebook, Mail } from "lucide-react";
+import Link from "next/link"
+import { Instagram, Youtube, Facebook, Mail } from "lucide-react"
 
 const navLinks = [
   { label: "About Me", href: "#coach" },
   { label: "How I Coach", href: "#services" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact Me", href: "#contact" },
-];
+]
 
 const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
   { icon: Facebook, href: "#", label: "Facebook" },
-];
+]
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-bean-blue-dark px-6">
-      <div className="mx-auto max-w-5xl py-10">
+    <footer className="bg-bean-blue-dark border-t border-white/10 px-6">
+      <div className="section-container py-10">
         <div className="grid gap-10 md:grid-cols-12 md:gap-6">
           {/* Brand */}
           <div className="md:col-span-5">
@@ -79,7 +79,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all hover:border-bean-accent hover:bg-bean-accent hover:text-bean-dark"
+                  className="social-icon-btn"
                 >
                   <social.icon aria-hidden="true" size={16} />
                 </a>
@@ -89,7 +89,7 @@ export default function Footer() {
 
           {/* Links */}
           <nav className="md:col-span-3" aria-label="Footer navigation">
-            <h4 className="uppercase text-white/60">Navigation</h4>
+            <h4 className="text-white/60 uppercase">Navigation</h4>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -106,11 +106,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="md:col-span-4">
-            <h4 className="uppercase text-white/60">Talk to Me</h4>
+            <h4 className="text-white/60 uppercase">Talk to Me</h4>
 
             <a
               href="mailto:info@beansvolleyball.com"
-              className="mt-4 inline-flex items-center gap-2 text-white transition-colors hover:text-bean-accent"
+              className="hover:text-bean-accent mt-4 inline-flex items-center gap-2 text-white transition-colors"
             >
               <Mail aria-hidden="true" className="h-4 w-4" />
               info@beansvolleyball.com
@@ -131,5 +131,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

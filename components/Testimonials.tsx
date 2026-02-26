@@ -6,6 +6,8 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -39,13 +41,13 @@ export default function Testimonials() {
     >
       {/* texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="texture-grid opacity-[0.06]"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:72px_72px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="section-container relative">
         <header className="mb-9 text-center">
           <h2>
             What My Athletes <span className="text-bean-blue">Say</span>
@@ -59,12 +61,9 @@ export default function Testimonials() {
         >
           {testimonials.map((t, index) => (
             <li key={index} className="h-full">
-              <Card className="group relative h-full rounded-3xl border-bean-blue/15 bg-white ring-bean-blue/15 shadow-[0_10px_40px_rgba(10,29,77,0.08)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_60px_rgba(10,29,77,0.14)]">
+              <Card className="card-hover-lift group relative h-full rounded-3xl border-bean-blue/15 ring-bean-blue/15">
                 {/* top accent */}
-                <div
-                  className="absolute inset-x-0 top-0 h-[3px] rounded-t-3xl bg-gradient-to-r from-bean-blue-primary via-bean-blue-primary to-bean-yellow-primary opacity-70"
-                  aria-hidden="true"
-                />
+                <div className="card-accent-bar" aria-hidden="true" />
 
                 {/* quote icon */}
                 <Quote
@@ -72,7 +71,7 @@ export default function Testimonials() {
                   className="absolute right-6 top-6 h-10 w-10 text-bean-blue/10"
                 />
 
-                <CardHeader className="pb-0">
+                <CardHeader>
                   <div className="flex items-center gap-2">
                     <span
                       className="inline-block h-2 w-2 rounded-full bg-bean-accent"
@@ -82,6 +81,17 @@ export default function Testimonials() {
                       Testimonial
                     </span>
                   </div>
+                  <CardTitle className="uppercase text-bean-black">
+                    {t.name}
+                  </CardTitle>
+                  <CardDescription>
+                    <Badge
+                      variant="outline"
+                      className="h-auto rounded-full border-bean-blue/15 bg-bean-blue-light px-3 py-1 text-bean-blue"
+                    >
+                      {t.role}
+                    </Badge>
+                  </CardDescription>
                 </CardHeader>
 
                 <CardContent className="flex-1">
@@ -90,15 +100,8 @@ export default function Testimonials() {
                   </blockquote>
                 </CardContent>
 
-                <CardFooter className="flex-col items-start gap-0">
-                  <Separator className="mb-5 bg-bean-blue/10" />
-                  <p className="uppercase text-bean-black">{t.name}</p>
-                  <Badge
-                    variant="outline"
-                    className="mt-2 h-auto rounded-full border-bean-blue/15 bg-bean-blue-light px-3 py-1 text-bean-blue"
-                  >
-                    {t.role}
-                  </Badge>
+                <CardFooter>
+                  <Separator className="bg-bean-blue/10" />
                 </CardFooter>
               </Card>
             </li>

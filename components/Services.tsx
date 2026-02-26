@@ -3,7 +3,6 @@ import { Monitor, Video, MapPin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -49,13 +48,13 @@ export default function Services() {
     >
       {/* Texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        className="texture-grid opacity-[0.08]"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="section-container relative">
         <header className="mb-9">
           <h2 className="text-bean-black">
             How I <span className="text-bean-blue">Coach</span>
@@ -66,35 +65,25 @@ export default function Services() {
         </header>
 
         <ul
-          className="mb-10 grid grid-cols-1 gap-3 md:grid-cols-3"
+          className="mb-10 grid gap-3 md:grid-cols-3"
           aria-label="Coaching services"
         >
           {services.map((s) => (
             <li key={s.title} className="h-full">
-              <Card className="group border-bean-blue/10 ring-bean-blue/10 relative h-full gap-3 rounded-xl bg-white shadow-[0_10px_40px_rgba(10,29,77,0.08)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_60px_rgba(10,29,77,0.14)]">
-                <div
-                  className="from-bean-blue-primary via-bean-blue-primary to-bean-yellow-primary absolute inset-x-0 top-0 h-[3px] rounded-t-3xl bg-gradient-to-r opacity-70"
-                  aria-hidden="true"
-                />
+              <Card className="card-hover-lift group relative h-full gap-3 border-bean-blue/10 ring-bean-blue/10">
+                <div className="card-accent-bar" aria-hidden="true" />
 
-                <CardHeader className="pb-0">
-                  <div className="flex items-center justify-start gap-3">
-                    <div className="border-bean-blue/15 bg-bean-blue/10 text-bean-blue group-hover:bg-bean-blue/12 grid h-12 w-12 place-items-center rounded-md border shadow-sm transition-all duration-300">
-                      {s.icon}
-                    </div>
-                    <CardTitle className="text-bean-black">
-                      <h3 className="h4 uppercase">{s.title}</h3>
-                    </CardTitle>
+                <CardHeader>
+                  <div className="grid h-12 w-12 place-items-center rounded-md border border-bean-blue/15 bg-bean-blue/10 text-bean-blue">
+                    {s.icon}
                   </div>
-
-                  <CardDescription className="text-bean-blue-dark hidden">
-                    {s.outcome}
+                  <CardTitle className="text-bean-black">
+                    <h3 className="h4 uppercase">{s.title}</h3>
+                  </CardTitle>
+                  <CardDescription className="text-bean-blue-dark/70 small">
+                    {s.detail}
                   </CardDescription>
                 </CardHeader>
-
-                <CardContent>
-                  <p className="text-bean-blue-dark/70 small">{s.detail}</p>
-                </CardContent>
 
                 <CardFooter className="mt-auto flex-col items-stretch gap-0">
                   <Separator className="bg-bean-blue/10 mb-5" />
