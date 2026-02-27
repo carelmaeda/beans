@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { Monitor, Video, MapPin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import CountUp from "@/components/CountUp"
+import Reveal from "@/components/Reveal"
 import {
   Card,
   CardDescription,
@@ -12,31 +14,31 @@ import { Separator } from "@/components/ui/separator"
 
 const services = [
   {
-    title: "Online Coaching",
-    icon: <Monitor aria-hidden="true" className="h-6 w-6" />,
-    outcome: "Build pro-level game IQ and mental toughness from anywhere.",
-    detail:
-      "Weekly video calls, custom roadmap, career planning, and direct feedback on your development.",
-    price: 120,
-    priceNote: "Final plan depends on your goals",
-  },
-  {
     title: "Video Analysis",
     icon: <Video aria-hidden="true" className="h-6 w-6" />,
-    outcome: "Fix the technical flaws you can't see yourself.",
+    outcome: "I find the flaws you can't see and show you how to fix them.",
     detail:
-      "I break down your footage frame-by-frame and give you specific drills to improve.",
+      "Send me your film. I break it down frame by frame with specific drills for your position.",
     price: 85,
     priceNote: "Per session",
   },
   {
+    title: "Online Coaching",
+    icon: <Monitor aria-hidden="true" className="h-6 w-6" />,
+    outcome: "Same intensity, same standards — from anywhere.",
+    detail:
+      "Weekly video calls, custom roadmap, career planning, and direct feedback on technique and mindset.",
+    price: 120,
+    priceNote: "Final plan depends on your goals",
+  },
+  {
     title: "In-Person Training",
     icon: <MapPin aria-hidden="true" className="h-6 w-6" />,
-    outcome: "Experience what pro training intensity feels like.",
+    outcome: "Real pro-level training intensity, in person.",
     detail:
-      "Hands-on technical drills, real-time corrections, and physical conditioning.",
+      "Hands-on technical work, real-time corrections, and physical conditioning.",
     price: 150,
-    priceNote: "Availability varies by location",
+    priceNote: "Per session",
   },
 ]
 
@@ -44,83 +46,77 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-bean-blue-light/60 relative overflow-hidden px-6 py-12 md:py-16"
+      className="texture-light relative overflow-hidden px-4 py-12 md:px-6 md:py-16"
     >
-      {/* Texture */}
-      <div
-        className="texture-grid opacity-[0.08]"
-        aria-hidden="true"
-      >
-        <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      </div>
+      <div className="section-container">
+        <Reveal>
+          <header className="mb-9">
+            <h2 className="text-brand-black uppercase">
+              Pick How You Want to{" "}
+              <span className="text-brand-blue">Train</span>
+            </h2>
+            <p className="text-brand-blue-dark/70 max-w-[60ch]">
+              Every option gets you direct access to me. No assistants, no
+              generic programs. Just real coaching.
+            </p>
+          </header>
+        </Reveal>
 
-      <div className="section-container relative">
-        <header className="mb-9">
-          <h2 className="text-bean-black">
-            How I <span className="text-bean-blue">Coach</span>
-          </h2>
-          <p className="text-bean-blue-dark/70 max-w-[60ch]">
-            Three ways to train with me, based on your needs.
-          </p>
-        </header>
-
-        <ul
-          className="mb-10 grid gap-3 md:grid-cols-3"
-          aria-label="Coaching services"
-        >
-          {services.map((s) => (
-            <li key={s.title} className="h-full">
-              <Card className="card-hover-lift group relative h-full gap-3 border-bean-blue/10 ring-bean-blue/10">
-                <div className="card-accent-bar" aria-hidden="true" />
-
-                <CardHeader>
-                  <div className="grid h-12 w-12 place-items-center rounded-md border border-bean-blue/15 bg-bean-blue/10 text-bean-blue">
-                    {s.icon}
-                  </div>
-                  <CardTitle className="text-bean-black">
-                    <h3 className="h4 uppercase">{s.title}</h3>
-                  </CardTitle>
-                  <CardDescription className="text-bean-blue-dark/70 small">
-                    {s.detail}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardFooter className="mt-auto flex-col items-stretch gap-0">
-                  <Separator className="bg-bean-blue/10 mb-5" />
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <small className="text-bean-blue-dark/45 tracking-[0.18em] uppercase">
-                        Starting at
-                      </small>
-                      <p className="text-bean-black">
-                        <span
-                          aria-label={`Starting at ${s.price} Canadian dollars`}
-                        >
-                          ${s.price}
-                        </span>{" "}
-                        <small className="text-bean-blue-dark/45 uppercase">
-                          CAD
-                        </small>
-                      </p>
+        <Reveal stagger>
+          <ul
+            className="mb-10 grid gap-4 md:grid-cols-3"
+            aria-label="Coaching services"
+          >
+            {services.map((s) => (
+              <li key={s.title} className="h-full">
+                <Card className="group border-brand-blue/10 ring-brand-blue/10 relative h-full justify-between">
+                  <CardHeader>
+                    <div className="border-brand-blue/15 bg-brand-blue/10 text-brand-blue grid h-12 w-12 place-items-center rounded-md border">
+                      {s.icon}
                     </div>
+                    <CardTitle className="h4 text-brand-black uppercase">
+                      {s.title}
+                    </CardTitle>
+                    <p className="text-brand-blue-dark">{s.outcome}</p>
+                    <CardDescription className="text-brand-blue-dark/55">
+                      {s.detail}
+                    </CardDescription>
+                  </CardHeader>
 
-                    <p className="text-bean-blue-dark/55 max-w-[18ch] text-right">
-                      {s.priceNote}
+                  <CardFooter className="flex-col items-stretch">
+                    <Separator className="bg-brand-blue/10 mb-4" />
+                    <small className="text-brand-blue-dark/45 uppercase">
+                      Starting at
+                    </small>
+                    <p className="text-brand-black">
+                      <span
+                        className="text-2xl font-bold"
+                        aria-label={`Starting at ${s.price} Canadian dollars`}
+                      >
+                        $<CountUp target={s.price} />
+                      </span>{" "}
+                      <small className="text-brand-blue-dark/45 uppercase">
+                        CAD
+                      </small>
                     </p>
-                  </div>
-                </CardFooter>
-              </Card>
-            </li>
-          ))}
-        </ul>
+                    <p className="text-brand-blue-dark/55">{s.priceNote}</p>
+                  </CardFooter>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-        <div className="text-center">
-          <Button asChild variant="default">
-            <Link href="#contact" className="inline-flex items-center gap-2">
-              Book a Call <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+        <Reveal>
+          <div className="text-center">
+            <Button asChild variant="default">
+              <Link href="#contact" className="inline-flex items-center gap-2">
+                Book a Free Call First{" "}
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

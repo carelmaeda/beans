@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import Reveal from "@/components/Reveal";
 
 const contactSchema = z.object({
   from_name: z.string().min(2, "Name is required").max(50),
@@ -77,7 +78,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-bean-blue-dark px-6 py-12 md:py-16"
+      className="noise-grain relative overflow-hidden bg-brand-blue-dark px-4 py-12 md:px-6 md:py-16"
     >
       {/* background accents */}
       <div
@@ -85,43 +86,46 @@ export default function Contact() {
         aria-hidden="true"
       >
         <div className="bg-[radial-gradient(circle_at_25%_20%,rgba(244,195,58,0.35),transparent_55%),radial-gradient(circle_at_75%_30%,rgba(22,62,170,0.45),transparent_60%)]" />
-        <div className="bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="bg-[linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.10)_1px,transparent_1px)] bg-[size:52px_52px]" />
       </div>
 
       <div className="section-container relative">
-        <header className="mb-10 text-center">
-          <h2 className="uppercase text-white">
-            Ready to <span className="text-bean-accent">Start?</span>
-          </h2>
-          <p className="mx-auto max-w-[60ch] text-white/75">
-            Book a free 20-minute call. No pressure—just a conversation about
-            your goals.
-          </p>
-        </header>
+        <Reveal>
+          <header className="mb-10 text-center">
+            <h2 className="uppercase text-white">
+              Let&apos;s Get You <span className="text-brand-accent">Started</span>
+            </h2>
+            <p className="mx-auto max-w-[60ch] text-white/75">
+              Free 20-minute call. No sales pitch — just an honest conversation
+              about your game.
+            </p>
+          </header>
+        </Reveal>
 
-        <div className="grid items-stretch gap-6 lg:grid-cols-12">
+        <Reveal>
+          <div className="grid items-stretch gap-6 lg:grid-cols-12">
           {/* Left */}
           <div className="glass-panel lg:col-span-5">
-            <h3 className="uppercase text-white">What to Expect</h3>
+            <h3 className="uppercase text-white">Here&apos;s How It Works</h3>
 
             <ol className="mt-4 space-y-3 text-white/80">
               <li className="flex items-start gap-3">
                 <span className="step-badge">
                   1
                 </span>
-                <span>We discuss your current level and goals</span>
+                <span>You tell me about your game and your goals</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="step-badge">
                   2
                 </span>
-                <span>I explain how my coaching works</span>
+                <span>I break down how I&apos;d approach your development</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="step-badge">
                   3
                 </span>
-                <span>You decide if it&apos;s the right fit</span>
+                <span>You decide if it&apos;s the right fit — zero pressure</span>
               </li>
             </ol>
 
@@ -129,19 +133,19 @@ export default function Contact() {
               <p className="flex items-center gap-2 text-white/75">
                 <Clock
                   aria-hidden="true"
-                  className="h-4 w-4 text-bean-accent"
+                  className="h-4 w-4 text-brand-accent"
                 />
-                Free 20 minutes · No obligation
+                Free · 20 minutes · Honest conversation
               </p>
 
               <div>
-                <p className="uppercase text-white/55">Questions?</p>
+                <p className="uppercase text-white/55">Rather email me?</p>
                 <a
-                  href="mailto:info@beansvolleyball.com"
-                  className="mt-2 inline-flex items-center gap-2 text-white transition-colors hover:text-bean-accent"
+                  href="mailto:info@coachmami.com"
+                  className="mt-2 inline-flex items-center gap-2 text-white transition-colors hover:text-brand-accent"
                 >
                   <Mail aria-hidden="true" className="h-4 w-4" />
-                  info@beansvolleyball.com
+                  info@coachmami.com
                 </a>
               </div>
             </div>
@@ -230,13 +234,13 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <Label htmlFor="goals" className="uppercase text-white/70">
-                  Anything you&apos;d like me to know?{" "}
+                  Tell me about your game{" "}
                   <span className="text-white/45">(optional)</span>
                 </Label>
                 <Textarea
                   id="goals"
                   {...register("goals")}
-                  placeholder="Your goals, current level, questions..."
+                  placeholder="Your position, current level, what you want to improve..."
                   className="input-dark-bg min-h-[96px] resize-none p-3"
                 />
               </div>
@@ -246,7 +250,7 @@ export default function Contact() {
                   type="submit"
                   variant="default"
                   disabled={submitStatus === "loading"}
-                  className="w-full"
+                  className="w-full md:w-auto md:min-w-[200px]"
                 >
                   {submitStatus === "loading" ? (
                     <span className="inline-flex items-center gap-2">
@@ -258,7 +262,7 @@ export default function Contact() {
                       Sending
                     </span>
                   ) : submitStatus === "success" ? (
-                    <span className="inline-flex items-center gap-2">
+                    <span className="animate-scale-in inline-flex items-center gap-2">
                       <CheckCircle aria-hidden="true" size={18} />
                       Request Sent
                     </span>
@@ -274,7 +278,7 @@ export default function Contact() {
                 </Button>
 
                 <p
-                  className="mt-3 text-center text-white/60"
+                  className="mt-3 text-center text-white/60 md:text-left"
                   aria-live="polite"
                 >
                   {statusMessage}
@@ -282,7 +286,8 @@ export default function Contact() {
               </div>
             </form>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

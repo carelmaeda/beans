@@ -9,95 +9,102 @@ import {
   Shield,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
+import Reveal from "@/components/Reveal"
 
 const outcomes = [
   {
     icon: <Zap aria-hidden="true" className="h-5 w-5" />,
-    text: "Pro-level discipline and daily standards",
+    text: "Pro-Level Daily Standards",
     description:
-      "I push you to train, recover, and prepare like a real professional.",
+      "No more winging it. I give you the structure real professionals follow.",
   },
   {
     icon: <Users aria-hidden="true" className="h-5 w-5" />,
-    text: "Leadership that shows when it matters",
+    text: "On-Court Leadership",
     description:
-      "You learn to lead by actions, not words—on and off the court.",
+      "You learn to lead through preparation, communication, and compete.",
   },
   {
     icon: <Brain aria-hidden="true" className="h-5 w-5" />,
-    text: "Fast, calm decisions under pressure",
+    text: "Game IQ That Sets You Apart",
     description:
-      "I train you to think clearly and choose right when the game speeds up.",
+      "Stop reacting, start anticipating. That's where the advantage lives.",
   },
   {
     icon: <Target aria-hidden="true" className="h-5 w-5" />,
-    text: "High volleyball IQ and technical precision",
-    description: "You understand the game deeper and execute with intention.",
+    text: "Decisions Under Pressure",
+    description:
+      "I train you to think clearly when it's loud, fast, and everything matters.",
   },
   {
     icon: <Dumbbell aria-hidden="true" className="h-5 w-5" />,
-    text: "Conditioning built for high performance",
-    description: "Your body keeps up with your ambition and competitive goals.",
+    text: "Performance Conditioning",
+    description:
+      "Your body keeps up with your ambition. No gassing out in the fifth set.",
   },
   {
     icon: <Shield aria-hidden="true" className="h-5 w-5" />,
-    text: "Mental toughness for tight matches",
-    description:
-      "You stay composed, confident, and aggressive in close moments.",
+    text: "Mental Toughness",
+    description: "Most players shrink in tight games. You won't.",
   },
 ]
 
 export default function Outcomes() {
   return (
-    <section className="bg-bean-blue-dark/95 relative overflow-hidden px-6 py-12">
+    <section className="noise-grain bg-brand-blue-dark relative overflow-hidden border-t border-white/10 px-4 py-12 md:px-6">
       <div className="section-container">
-        <header className="mb-9 text-center">
-          <h2 className="text-white">
-            What we will{" "}
-            <span className="text-bean-accent">Develop Together</span>
-          </h2>
-          <p className="text-white/70">
-            I don&apos;t just teach volleyball. I build complete athletes.
-          </p>
-        </header>
+        <Reveal>
+          <header className="mb-9 text-center">
+            <h2 className="text-white uppercase">
+              What I <span className="text-brand-accent">Build Into You</span>
+            </h2>
+            <p className="text-white/70">
+              I don&apos;t just teach volleyball. I develop complete athletes.
+            </p>
+          </header>
+        </Reveal>
 
-        <ul
-          className="mb-10 grid gap-4 sm:grid-cols-2"
-          aria-label="Outcomes you will develop"
-        >
-          {outcomes.map((item, index) => (
-            <li key={index}>
-              <Card
-                size="sm"
-                className="h-full flex-row bg-white/5 text-white ring-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
-              >
-                <CardContent className="flex items-center gap-4">
-                  <div className="group-hover:border-bean-accent/35 group-hover:bg-bean-accent/20 grid h-11 w-11 place-items-center rounded-lg bg-white/15">
-                    {item.icon}
-                  </div>
+        <Reveal stagger>
+          <ul
+            className="mb-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+            aria-label="Outcomes you will develop"
+          >
+            {outcomes.map((item, index) => (
+              <li key={index}>
+                <Card
+                  size="sm"
+                  className="h-full bg-white/5 text-white ring-white/10 backdrop-blur-sm"
+                >
+                  <CardContent className="flex h-full items-start justify-between gap-3">
+                    <div className="grid aspect-square h-12 place-items-center rounded-xl bg-white/10">
+                      {item.icon}
+                    </div>
+                    <div className="grid">
+                      <strong>{item.text}</strong>
+                      <p className="text-white/60">{item.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-                  <div className="grid">
-                    <strong>{item.text}</strong>
-                    <div className="font-thin">{item.description}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </li>
-          ))}
-        </ul>
+        <Reveal>
+          <div className="text-center">
+            <Button asChild variant="default">
+              <Link href="#contact" className="inline-flex items-center gap-2">
+                Let&apos;s Talk About Your Game{" "}
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </Button>
 
-        <div className="text-center">
-          <Button asChild variant="default">
-            <Link href="#contact" className="inline-flex items-center gap-2">
-              Book a Call <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
-          </Button>
-
-          <p className="mt-3 text-white/55">
-            I&apos;ll recommend the best next step after we talk.
-          </p>
-        </div>
+            <p className="mt-3 text-white/55">
+              Book a free call and I&apos;ll tell you exactly where to start.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

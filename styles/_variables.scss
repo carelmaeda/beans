@@ -1,30 +1,30 @@
 // ==========================================================================
-// BEANS Project - Volleyball Color Library
-// Based on extracted tones: Royal Blue, Athletic Yellow, and Pure White
+// Coach Mami — Volleyball Coaching Color Library
+// Royal Blue, Athletic Yellow, and Pure White
 // ==========================================================================
 
 // --- Core Brand Colors ---
-$bean-blue-primary: #163eaa; // The dominant royal blue from the ball
-$bean-yellow-primary: #f4c33a; // The vibrant golden-yellow
-$bean-white: #ffffff; // Pure white for high-contrast areas
-$bean-black: #1a1a1a; // Carbon black for pro-level typography
+$brand-blue-primary: #163eaa;
+$brand-yellow-primary: #f4c33a;
+$brand-white: #ffffff;
+$brand-black: #1a1a1a;
 
 // --- Derived Functional Tones ---
-$bean-blue-dark: #0a1d4d; // For footers and heavy text
-$bean-blue-light: #e8eeff; // For subtle section backgrounds
-$bean-yellow-bright: #ffd700; // High-visibility "Pop" for CTA buttons
-$bean-gray-light: #f2f2f2; // Off-white for a modern, soft feel
+$brand-blue-dark: #0a1d4d;
+$brand-blue-light: #e8eeff;
+$brand-yellow-bright: #ffd700;
+$brand-gray-light: #f2f2f2;
 
 // --- UI Element Mappings ---
-$primary-action: $bean-yellow-bright;
-$primary-surface: $bean-white;
-$text-main: $bean-black;
-$text-muted: $bean-blue-dark;
-$border-color: rgba($bean-blue-primary, 0.1);
+$primary-action: $brand-yellow-bright;
+$primary-surface: $brand-white;
+$text-main: $brand-black;
+$text-muted: $brand-blue-dark;
+$border-color: rgba($brand-blue-primary, 0.1);
 
 // --- Transition Settings ---
-$bean-transition-fast: 200ms ease-in-out;
-$bean-transition-pop: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275); // "Sprouting" effect
+$brand-transition-fast: 200ms ease-in-out;
+$brand-transition-pop: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 // --- Spacing ---
 $spacing-xs: 0.25rem;
@@ -47,16 +47,16 @@ $radius-full: 9999px;
 // ==========================================================================
 :root {
   // Core Brand
-  --bean-blue-primary: #{$bean-blue-primary};
-  --bean-yellow-primary: #{$bean-yellow-primary};
-  --bean-white: #{$bean-white};
-  --bean-black: #{$bean-black};
+  --brand-blue-primary: #{$brand-blue-primary};
+  --brand-yellow-primary: #{$brand-yellow-primary};
+  --brand-white: #{$brand-white};
+  --brand-black: #{$brand-black};
 
   // Derived Tones
-  --bean-blue-dark: #{$bean-blue-dark};
-  --bean-blue-light: #{$bean-blue-light};
-  --bean-yellow-bright: #{$bean-yellow-bright};
-  --bean-gray-light: #{$bean-gray-light};
+  --brand-blue-dark: #{$brand-blue-dark};
+  --brand-blue-light: #{$brand-blue-light};
+  --brand-yellow-bright: #{$brand-yellow-bright};
+  --brand-gray-light: #{$brand-gray-light};
 
   // UI Mappings
   --primary-action: #{$primary-action};
@@ -66,6 +66,6 @@ $radius-full: 9999px;
   --border-color: #{$border-color};
 
   // Transitions
-  --transition-fast: #{$bean-transition-fast};
-  --transition-pop: #{$bean-transition-pop};
+  --transition-fast: #{$brand-transition-fast};
+  --transition-pop: #{$brand-transition-pop};
 }

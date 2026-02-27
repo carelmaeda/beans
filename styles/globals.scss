@@ -6,26 +6,30 @@
 // ==========================================================================
 @theme inline {
   // Core Brand Colors
-  --color-bean-blue: var(--bean-blue-primary);
-  --color-bean-yellow: var(--bean-yellow-primary);
-  --color-bean-white: var(--bean-white);
-  --color-bean-black: var(--bean-black);
+  --color-brand-blue: var(--brand-blue-primary);
+  --color-brand-yellow: var(--brand-yellow-primary);
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
 
   // Derived Tones
-  --color-bean-blue-dark: var(--bean-blue-dark);
-  --color-bean-blue-light: var(--bean-blue-light);
-  --color-bean-yellow-bright: var(--bean-yellow-bright);
-  --color-bean-gray-light: var(--bean-gray-light);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-yellow-bright: var(--brand-yellow-bright);
+  --color-brand-gray-light: var(--brand-gray-light);
 
   // Semantic aliases (for Hero and other sections)
-  --color-bean-dark: var(--bean-blue-dark);
-  --color-bean-accent: var(--bean-yellow-bright);
+  --color-brand-dark: var(--brand-blue-dark);
+  --color-brand-accent: var(--brand-yellow-bright);
 
   // Legacy mappings (for compatibility)
-  --color-primary: var(--bean-blue-primary);
-  --color-accent: var(--bean-yellow-bright);
-  --color-base: var(--bean-white);
-  --color-dark: var(--bean-black);
+  --color-primary: var(--brand-blue-primary);
+  --color-accent: var(--brand-yellow-bright);
+  --color-base: var(--brand-white);
+  --color-dark: var(--brand-black);
+
+  // Font families
+  --font-family-display: var(--font-barlow), var(--font-dm-sans), sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 // ==========================================================================
@@ -39,10 +43,21 @@ html {
 body {
   font-size: 1rem; // 16px
   font-weight: 400;
-  background: var(--bean-white);
+  background: var(--brand-white);
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// Brand selection color (gold highlight)
+::selection {
+  background: rgba(255, 215, 0, 0.25);
+  color: var(--brand-blue-dark);
+}
+
+::-moz-selection {
+  background: rgba(255, 215, 0, 0.25);
+  color: var(--brand-blue-dark);
 }
 
 // Scroll margin for sections with IDs to offset fixed header
@@ -52,7 +67,7 @@ section[id] {
 
 // Focus Visible (Accessibility)
 *:focus-visible {
-  outline: 2px solid var(--bean-blue-primary);
+  outline: 2px solid var(--brand-blue-primary);
   outline-offset: 2px;
 }
 
@@ -60,9 +75,20 @@ section[id] {
 // Typography
 // ==========================================================================
 
+// Display font for headings — athletic, condensed feel
+.hero-text,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: var(--font-barlow), var(--font-dm-sans), sans-serif;
+}
+
 .hero-text {
-  font-size: clamp(3rem, 6vw, 4.5rem); // 48–72px
   line-height: 0.9;
+  font-size: clamp(2.5rem, 5vw, 4rem); // 48–72px
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -77,7 +103,7 @@ h1,
 
 h2,
 .h2 {
-  font-size: 1.75rem; // 28px
+  font-size: clamp(1.5rem, 3vw, 1.75rem); // 24–28px fluid
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -109,6 +135,7 @@ p,
 .body {
   font-size: 1rem;
   font-weight: 400;
+  line-height: 1.6;
 }
 
 small,
@@ -122,11 +149,27 @@ small,
 // Layout
 // ==========================================================================
 
+// ==========================================================================
+// Logo
+// ==========================================================================
+
+.brand-logo {
+  font-family: var(--font-barlow), var(--font-dm-sans), sans-serif;
+  font-size: 1.25rem; // 20px
+  font-weight: 800;
+  color: var(--brand-blue-primary);
+  text-transform: uppercase;
+  font-style: italic;
+  span {
+    color: var(--brand-yellow-primary);
+  }
+}
+
 .section-container {
   @apply mx-auto;
 
   @media (min-width: 768px) {
-    max-width: 960px;
+    max-width: 1080px;
   }
 }
 
@@ -141,34 +184,27 @@ small,
   box-shadow: 0 10px 40px rgba(10, 29, 77, 0.08);
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 60px rgba(10, 29, 77, 0.14);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(10, 29, 77, 0.16);
   }
-}
-
-// Top accent gradient bar — used on Cards in Services, Testimonials
-.card-accent-bar {
-  @apply absolute inset-x-0 top-0 h-[3px] rounded-t-3xl opacity-70;
-  background: linear-gradient(
-    to right,
-    var(--bean-blue-primary),
-    var(--bean-blue-primary),
-    var(--bean-yellow-primary)
-  );
 }
 
 // Social icon button — used in Footer, Contact
 .social-icon-btn {
-  @apply flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all;
+  @apply flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all;
 
   &:hover {
-    @apply border-bean-accent bg-bean-accent text-bean-dark;
+    @apply border-brand-accent bg-brand-accent text-brand-dark;
+  }
+
+  &:focus-visible {
+    @apply border-brand-accent ring-brand-accent/50 ring-2 outline-none;
   }
 }
 
 // Step number badge — used in Contact "What to Expect"
 .step-badge {
-  @apply mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border border-bean-accent/25 bg-bean-accent/15 text-bean-accent;
+  @apply border-brand-accent/25 bg-brand-accent/15 text-brand-accent mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-xl border;
 }
 
 // Dark-section glass panel — used in Contact left/right panels
@@ -179,7 +215,11 @@ small,
 
 // Form input on dark bg — used in Contact inputs
 .input-dark-bg {
-  @apply h-11 rounded-2xl border border-transparent bg-white text-bean-black placeholder:text-gray-400 focus-visible:border-bean-accent focus-visible:ring-0;
+  @apply text-brand-black focus-visible:border-brand-accent h-11 rounded-2xl border border-transparent bg-white placeholder:text-gray-400 focus-visible:ring-0;
+
+  &[aria-invalid="true"] {
+    @apply border-red-400 focus-visible:border-red-400;
+  }
 }
 
 // Grid texture overlay — used in Hero, Services, About, Testimonials, Contact
@@ -191,25 +231,61 @@ small,
   }
 }
 
+// Subtle radial glow + washi paper fiber texture for light/white sections
+.texture-light {
+  position: relative;
+
+  // Warm radial glows
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse at 20% 50%,
+        rgba(22, 62, 170, 0.04),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 30%,
+        rgba(244, 195, 58, 0.03),
+        transparent 55%
+      );
+  }
+
+  // Washi paper fiber texture — horizontal grain mimicking traditional Japanese paper
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='w'%3E%3CfeTurbulence baseFrequency='0.65 0.015' numOctaves='5' type='fractalNoise' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+  }
+}
+
 // ==========================================================================
 // Utility Classes
 // ==========================================================================
 
 // Gradient backgrounds
-.bg-bean-gradient {
+.bg-brand-gradient {
   background: linear-gradient(
     135deg,
-    var(--bean-blue-primary) 0%,
-    var(--bean-blue-dark) 100%
+    var(--brand-blue-primary) 0%,
+    var(--brand-blue-dark) 100%
   );
 }
 
 // Text gradients
-.text-bean-gradient {
+.text-brand-gradient {
   background: linear-gradient(
     135deg,
-    var(--bean-blue-primary) 0%,
-    var(--bean-yellow-primary) 100%
+    var(--brand-blue-primary) 0%,
+    var(--brand-yellow-primary) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -217,10 +293,257 @@ small,
 }
 
 // Transitions
-.transition-bean {
+.transition-brand {
   transition: var(--transition-fast);
 }
 
-.transition-bean-pop {
+.transition-brand-pop {
   transition: var(--transition-pop);
+}
+
+// ==========================================================================
+// Scroll Reveal Animation
+// ==========================================================================
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    filter 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+// Stagger delays for child elements (cards, list items)
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out,
+    filter 0.5s ease-out;
+}
+
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 100}ms;
+    }
+  }
+}
+
+// Reveal variant — slide from left (for images, carousels)
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  filter: blur(4px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    filter 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+// Reveal variant — scale up (for icons, badges, emphasis elements)
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(4px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out,
+    filter 0.5s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+// ==========================================================================
+// Hero Entrance Animation (page load, not scroll-triggered)
+// ==========================================================================
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-enter {
+  opacity: 0;
+  animation: heroFadeUp 0.7s ease-out forwards;
+}
+
+@for $i from 1 through 5 {
+  .hero-enter-#{$i} {
+    animation-delay: #{($i - 1) * 120}ms;
+  }
+}
+
+// ==========================================================================
+// Button Shine Effect (primary CTA shimmer)
+// ==========================================================================
+
+@keyframes btnShine {
+  0%,
+  100% {
+    left: -60%;
+  }
+  50% {
+    left: 150%;
+  }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    animation: btnShine 4s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+// ==========================================================================
+// Noise Grain Overlay (subtle texture for dark sections)
+// ==========================================================================
+
+.noise-grain {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='4' type='fractalNoise' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+// ==========================================================================
+// Active Nav Link (dot indicator)
+// ==========================================================================
+
+// Base pseudo-element on all nav links (hidden by default)
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brand-yellow-bright);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-link-active {
+  color: var(--brand-blue-primary);
+  font-weight: 500;
+
+  &::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+// ==========================================================================
+// Success Scale-In Animation
+// ==========================================================================
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.35s ease-out;
+}
+
+// ==========================================================================
+// Reduced Motion (Accessibility)
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter {
+    animation: none;
+    opacity: 1;
+  }
+
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .reveal-stagger > * {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .reveal-left,
+  .reveal-scale {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .btn-shine::after {
+    animation: none;
+  }
 }

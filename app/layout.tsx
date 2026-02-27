@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Barlow_Condensed } from "next/font/google";
 import "../styles/globals.scss";
 import { siteConfig } from "@/data/siteConfig";
 import { SITE_NAME, CONTACT_EMAIL } from "@/lib/constants";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
+});
+
+const barlow = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-barlow",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "BEANS Volleyball | Coach Mami - Seed to Pro",
+    default: "Coach Mami | Volleyball Coaching - Seed to Pro",
     template: `%s | ${SITE_NAME}`,
   },
   description: siteConfig.description,
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: siteConfig.url,
     siteName: SITE_NAME,
-    title: "BEANS Volleyball | Coach Mami - Seed to Pro",
+    title: "Coach Mami | Volleyball Coaching - Seed to Pro",
     description: siteConfig.description,
     images: [
       {
@@ -57,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BEANS Volleyball | Coach Mami - Seed to Pro",
+    title: "Coach Mami | Volleyball Coaching - Seed to Pro",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
@@ -116,9 +122,15 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${dmSans.variable} ${barlow.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-2xl focus:bg-brand-accent focus:px-4 focus:py-2 focus:text-brand-dark focus:font-semibold"
+        >
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

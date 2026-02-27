@@ -10,15 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bean: {
-          blue: "var(--bean-blue-primary)",
-          dark: "var(--bean-blue-dark)",
-          light: "var(--bean-blue-light)",
-          accent: "var(--bean-yellow-primary)",
-          bright: "var(--bean-yellow-bright)",
-          black: "var(--bean-black)",
-          white: "var(--bean-white)",
-          gray: "var(--bean-gray-light)",
+        brand: {
+          blue: "var(--brand-blue-primary)",
+          dark: "var(--brand-blue-dark)",
+          light: "var(--brand-blue-light)",
+          accent: "var(--brand-yellow-primary)",
+          bright: "var(--brand-yellow-bright)",
+          black: "var(--brand-black)",
+          white: "var(--brand-white)",
+          gray: "var(--brand-gray-light)",
           border: "var(--border-color)",
         },
       },

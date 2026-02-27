@@ -1,5 +1,5 @@
 /**
- * Core TypeScript type definitions for Beans Volleyball Coaching
+ * Core TypeScript type definitions for Coach Mami
  */
 
 // Navigation Types

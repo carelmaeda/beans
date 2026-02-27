@@ -1,35 +1,33 @@
 "use client";
 
-import { Quote } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 
 const testimonials = [
   {
-    name: "Marcus Chen",
+    name: "Marcus C.",
     role: "D1 College Player",
     quote:
-      "Coach Mami changed my game completely. Her focus on mental toughness helped me go from riding the bench to starting setter in one season. She sees things in your game that nobody else does.",
+      "Went from bench to starting setter in one season. She caught things in my film nobody else ever did. No sugarcoating — exactly what I needed.",
   },
   {
-    name: "Sarah Williams",
+    name: "Sarah W.",
     role: "Parent of Youth Athlete",
     quote:
-      "My daughter's confidence on the court has skyrocketed. Coach Mami doesn't just teach volleyball—she builds leaders. Worth every penny.",
+      "My daughter had talent but zero match confidence. Now she's calling plays and leading her team. That's not just coaching — that's something bigger.",
   },
   {
-    name: "Lucas Oliveira",
-    role: "Pro Overseas Player",
+    name: "Lucas O.",
+    role: "Pro Player, Europe",
     quote:
-      "I've worked with coaches my whole career, but nobody breaks down the game like Coach Mami. Her video analysis alone leveled up my decision-making. She's the real deal.",
+      "First coach who showed me specifically what I was doing wrong and gave me drills that actually fixed it. If you're serious, she's the real deal.",
   },
 ];
 
@@ -37,76 +35,97 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-bean-blue-light px-6 py-12 md:py-16"
+      className="texture-light relative overflow-hidden px-4 py-12 md:px-6 md:py-16"
     >
-      {/* texture */}
-      <div
-        className="texture-grid opacity-[0.06]"
-        aria-hidden="true"
-      >
-        <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:72px_72px]" />
-      </div>
+      <div className="section-container">
+        <Reveal>
+          <header className="mb-9 text-center">
+            <h2 className="uppercase">
+              Don&apos;t Take My{" "}
+              <span className="text-brand-blue">Word for It</span>
+            </h2>
+            <p>Here&apos;s what my athletes say after training with me.</p>
+          </header>
+        </Reveal>
 
-      <div className="section-container relative">
-        <header className="mb-9 text-center">
-          <h2>
-            What My Athletes <span className="text-bean-blue">Say</span>
-          </h2>
-          <p>Results speak louder than promises.</p>
-        </header>
+        <Reveal stagger>
+          <ul
+            className="grid gap-5 md:grid-cols-3"
+            aria-label="Athlete testimonials"
+          >
+            {testimonials.map((t, index) => {
+              const isCenter = index === 1;
+              return (
+                <li
+                  key={index}
+                  className={`h-full ${isCenter ? "md:scale-[1.05] md:z-10" : ""}`}
+                >
+                  <Card
+                    className={`group relative h-full overflow-hidden rounded-3xl ${
+                      isCenter
+                        ? "border-white/10 bg-brand-blue-dark text-white ring-white/10 transition-all duration-300 hover:-translate-y-1"
+                        : "card-hover-lift border-brand-blue/15 ring-brand-blue/15"
+                    }`}
+                    style={
+                      isCenter
+                        ? { boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }
+                        : undefined
+                    }
+                  >
+                    {/* Top accent — side cards only */}
+                    {!isCenter && (
+                      <div className="card-accent-bar" aria-hidden="true" />
+                    )}
 
-        <ul
-          className="grid gap-5 md:grid-cols-3"
-          aria-label="Athlete testimonials"
-        >
-          {testimonials.map((t, index) => (
-            <li key={index} className="h-full">
-              <Card className="card-hover-lift group relative h-full rounded-3xl border-bean-blue/15 ring-bean-blue/15">
-                {/* top accent */}
-                <div className="card-accent-bar" aria-hidden="true" />
-
-                {/* quote icon */}
-                <Quote
-                  aria-hidden="true"
-                  className="absolute right-6 top-6 h-10 w-10 text-bean-blue/10"
-                />
-
-                <CardHeader>
-                  <div className="flex items-center gap-2">
+                    {/* Decorative oversized quote mark */}
                     <span
-                      className="inline-block h-2 w-2 rounded-full bg-bean-accent"
                       aria-hidden="true"
-                    />
-                    <span className="uppercase text-bean-blue-dark/50">
-                      Testimonial
-                    </span>
-                  </div>
-                  <CardTitle className="uppercase text-bean-black">
-                    {t.name}
-                  </CardTitle>
-                  <CardDescription>
-                    <Badge
-                      variant="outline"
-                      className="h-auto rounded-full border-bean-blue/15 bg-bean-blue-light px-3 py-1 text-bean-blue"
+                      className={`pointer-events-none absolute top-1 left-5 select-none font-serif text-[7rem] leading-none ${
+                        isCenter
+                          ? "text-brand-accent/15"
+                          : "text-brand-blue/8"
+                      }`}
                     >
-                      {t.role}
-                    </Badge>
-                  </CardDescription>
-                </CardHeader>
+                      &ldquo;
+                    </span>
 
-                <CardContent className="flex-1">
-                  <blockquote className="text-bean-blue-dark">
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-                </CardContent>
+                    <CardHeader className="relative pt-16">
+                      <CardTitle
+                        className={`uppercase ${isCenter ? "text-white" : "text-brand-black"}`}
+                      >
+                        {t.name}
+                      </CardTitle>
+                      <CardDescription>
+                        <Badge
+                          variant="outline"
+                          className={`h-auto rounded-full px-3 py-1 ${
+                            isCenter
+                              ? "border-brand-accent/30 bg-brand-accent/10 text-brand-accent"
+                              : "border-brand-blue/15 bg-brand-blue-light text-brand-blue"
+                          }`}
+                        >
+                          {t.role}
+                        </Badge>
+                      </CardDescription>
+                    </CardHeader>
 
-                <CardFooter>
-                  <Separator className="bg-bean-blue/10" />
-                </CardFooter>
-              </Card>
-            </li>
-          ))}
-        </ul>
+                    <CardContent className="relative flex-1">
+                      <blockquote
+                        className={`text-lg leading-relaxed ${
+                          isCenter
+                            ? "text-white/85"
+                            : "text-brand-blue-dark"
+                        }`}
+                      >
+                        &ldquo;{t.quote}&rdquo;
+                      </blockquote>
+                    </CardContent>
+                  </Card>
+                </li>
+              );
+            })}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );
