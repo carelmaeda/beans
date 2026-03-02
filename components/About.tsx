@@ -105,10 +105,7 @@ export default function About() {
       className="bg-brand-blue-light relative overflow-hidden px-4 py-12 md:px-6 md:py-16"
     >
       {/* Texture */}
-      <div
-        className="texture-grid opacity-[0.06]"
-        aria-hidden="true"
-      >
+      <div className="texture-grid opacity-[0.06]" aria-hidden="true">
         <div className="bg-[linear-gradient(to_right,rgba(22,62,170,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,62,170,0.18)_1px,transparent_1px)] bg-[size:52px_52px]" />
       </div>
 
@@ -119,15 +116,16 @@ export default function About() {
               About <span className="text-brand-blue">Me</span>
             </h2>
             <p className="text-brand-blue-dark/70 max-w-[52ch]">
-              JVA-certified. Japanese-trained. 15+ years turning raw potential into professional careers.
+              Ceretified Coach. Japanese-trained. 15+ years turning raw
+              potential into professional careers.
             </p>
           </header>
         </Reveal>
 
-          <div className="grid items-start gap-8 lg:grid-cols-12">
+        <div className="grid items-start gap-8 lg:grid-cols-12">
           {/* Photo Carousel — bleeds left of content grid on desktop */}
           <Reveal variant="left" className="lg:col-span-5">
-            <figure className="relative mx-auto w-full max-w-[400px] lg:mx-0 lg:-ml-12 lg:max-w-none lg:w-[calc(100%+3rem)]">
+            <figure className="relative mx-auto w-full max-w-[400px] lg:mx-0 lg:-ml-12 lg:w-[calc(100%+3rem)] lg:max-w-none">
               <Carousel
                 setApi={setCarouselApi}
                 opts={{
@@ -166,8 +164,14 @@ export default function About() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious size="icon" className="left-3 border-0 bg-white/90 shadow-md hover:bg-white" />
-                <CarouselNext size="icon" className="right-3 border-0 bg-white/90 shadow-md hover:bg-white" />
+                <CarouselPrevious
+                  size="icon"
+                  className="left-3 border-0 bg-white/90 shadow-md hover:bg-white"
+                />
+                <CarouselNext
+                  size="icon"
+                  className="right-3 border-0 bg-white/90 shadow-md hover:bg-white"
+                />
               </Carousel>
 
               {/* Dot indicators */}
@@ -179,8 +183,8 @@ export default function About() {
                       onClick={() => carouselApi?.scrollTo(i)}
                       className={`h-2 rounded-full transition-all duration-300 ${
                         i === currentSlide
-                          ? "w-6 bg-brand-blue"
-                          : "w-2 bg-brand-blue/30"
+                          ? "bg-brand-blue w-6"
+                          : "bg-brand-blue/30 w-2"
                       }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
@@ -193,11 +197,10 @@ export default function About() {
           {/* Content */}
           <Reveal className="lg:col-span-7">
             <div className="space-y-4">
-              <p className="text-brand-blue-dark max-w-[62ch] text-lg font-medium leading-relaxed">
-                15+ years coaching serious athletes — from youth to
-                professional level. JVA-certified, trained in the Japanese
-                volleyball system, and focused on one thing: getting you to the
-                next stage.
+              <p className="text-brand-blue-dark max-w-[62ch] text-lg leading-relaxed font-medium">
+                15+ years coaching serious athletes — from youth to professional
+                level. Ceretified Coach, trained in the Japanese volleyball
+                system, and focused on one thing: getting you to the next stage.
               </p>
 
               <p className="text-brand-blue-dark/70 max-w-[62ch]">
@@ -220,7 +223,7 @@ export default function About() {
                 {values.map((v) => (
                   <li
                     key={v.title}
-                    className="flex items-start gap-2.5 rounded-lg border border-brand-blue/10 bg-white px-3 py-2.5"
+                    className="border-brand-blue/10 flex items-start gap-2.5 rounded-lg border bg-white px-3 py-2.5"
                   >
                     <div className="text-brand-blue mt-0.5 shrink-0">
                       {v.icon}
@@ -250,7 +253,7 @@ export default function About() {
               </Button>
             </div>
           </Reveal>
-          </div>
+        </div>
       </div>
     </section>
   )

@@ -3,7 +3,7 @@ import { SITE_NAME, CONTACT_EMAIL, SOCIAL_LINKS, ROUTES } from "@/lib/constants"
 
 export const siteConfig: SiteConfig = {
   name: SITE_NAME,
-  description: `Coach Mami — JVA-certified volleyball coach with 15+ years experience developing athletes from amateur to pro. Online coaching, video analysis, and in-person training.`,
+  description: `Coach Mami — Ceretified Coach volleyball coach with 15+ years experience developing athletes from amateur to pro. Online coaching, video analysis, and in-person training.`,
   url: "https://coachmami.com",
   ogImage: "/images/og-image.jpg",
   links: {

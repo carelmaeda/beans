@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="section-container relative z-10 flex min-h-[85vh] flex-col justify-center px-4 md:min-h-[500px] md:px-6 md:py-16">
         <div className="text-center md:max-w-[55%] md:text-left">
           <small className="hero-enter hero-enter-1 bg-brand-accent/15 text-brand-accent mb-5 inline-flex items-center rounded-md px-3 py-1.5 uppercase">
-            JVA-Certified Coach · 15+ Years
+            Ceretified Coach Coach · 15+ Years
           </small>
 
           <h1 className="hero-enter hero-enter-2 hero-text mb-6 text-white uppercase">

@@ -92,7 +92,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 max-w-sm text-white/70">
-              JVA-certified volleyball coach. 15+ years developing serious
+              Ceretified Coach volleyball coach. 15+ years developing serious
               athletes from amateur to pro level.
             </p>
 
