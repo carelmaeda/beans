@@ -87,16 +87,20 @@ const values = [
 export default function About() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [slideCount, setSlideCount] = useState(0)
+  const slideCount = coachImages.length
 
   useEffect(() => {
     if (!carouselApi) return
-    setSlideCount(carouselApi.scrollSnapList().length)
-    setCurrentSlide(carouselApi.selectedScrollSnap())
 
-    carouselApi.on("select", () => {
+    const handleSelect = () => {
       setCurrentSlide(carouselApi.selectedScrollSnap())
-    })
+    }
+
+    carouselApi.on("select", handleSelect)
+
+    return () => {
+      carouselApi.off("select", handleSelect)
+    }
   }, [carouselApi])
 
   return (
@@ -165,12 +169,12 @@ export default function About() {
                   ))}
                 </CarouselContent>
                 <CarouselPrevious
-                  size="icon"
-                  className="left-3 border-0 bg-white/90 shadow-md hover:bg-white"
+                  size="icon-lg"
+                  className="left-3 !h-14 !w-14 border-0 bg-white shadow-lg hover:bg-white/90 [&_svg]:size-7"
                 />
                 <CarouselNext
-                  size="icon"
-                  className="right-3 border-0 bg-white/90 shadow-md hover:bg-white"
+                  size="icon-lg"
+                  className="right-3 !h-14 !w-14 border-0 bg-white shadow-lg hover:bg-white/90 [&_svg]:size-7"
                 />
               </Carousel>
 
